@@ -11,8 +11,13 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
 
+window.axios = require('axios')
+window.axios.defaults.baseURL = "http://localhost:8000/api/"
+
 new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
+

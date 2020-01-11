@@ -1,13 +1,17 @@
 <template>
-    <div>Test Area</div>
+    <div>
+        <question></question>
+        <timer></timer>
+    </div>
 </template>
 
 <script>
-export default {
-
-}
+    import Question from '@/components/TestArea/Question.vue'
+    import Timer from '@/components/TestArea/Timer.vue'
+    export default {
+        components:{
+            Question,
+            Timer
+        }
+    }
 </script>
-
-<style>
-
-</style>
