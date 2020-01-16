@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <b-progress :value="timeLeft" :max="max" show-value animated></b-progress>
-    </div>
+    <b-progress :value="timeLeft" :max="max" show-value animated></b-progress>
 </template>
 
 <script>
@@ -12,6 +10,9 @@ export default {
             interval: "",
         }
     },
+    created(){
+        this.$store.state.activateTimer = true;
+    },
     computed:{
         activateTimer(){
             return this.$store.state.activateTimer
@@ -21,17 +22,13 @@ export default {
                 return this.$store.state.timeLeft
             },
             set(value){
-                this.$store.state.timeLeft = value
+                this.$store.state.timeLeft = value;
             }
-        }
+        },
     },
     watch:{
         activateTimer(value){
-            if (value){
-                this.cronometro();
-            }else{
-                this.pararCronometro();
-            }
+            value ? this.cronometro() : this.pararCronometro()
         }
     },
     methods:{
@@ -39,11 +36,9 @@ export default {
             this.interval = setInterval(this.contador, 1000);
         },
         contador(){
-            if (this.timeLeft == 0){
+            if (this.timeLeft == 0) {
                 this.$store.commit("stopTimer");
-            }else{
-                this.timeLeft--;
-            }
+            }else this.timeLeft--;
         },
         pararCronometro(){
             clearInterval(this.interval);

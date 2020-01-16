@@ -7,6 +7,8 @@ export default new Vuex.Store({
   state: {
     activateTimer: false,
     timeLeft: 60,
+    hits: 0,
+    time: 0,
 
   },
   getters:{
@@ -14,12 +16,20 @@ export default new Vuex.Store({
 
   },
   mutations: {
-    startTimer(state){
+    startTimer(state, numQuestion){
       state.timeLeft = 60;
-      state.activateTimer = true;
+      if (numQuestion > 1)
+        state.activateTimer = true;
     },
     stopTimer(state){
       state.activateTimer = false;
+      this.commit("addTestTime");
+    },
+    addHit(state){
+      state.hits++;
+    },
+    addTestTime(state){
+      state.time += 60 - state.timeLeft;
     }
 
   },
