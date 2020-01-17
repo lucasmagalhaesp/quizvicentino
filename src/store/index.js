@@ -9,6 +9,7 @@ export default new Vuex.Store({
     timeLeft: 60,
     hits: 0,
     time: 0,
+    cpActiveTestArea: 'instructions'
 
   },
   getters:{

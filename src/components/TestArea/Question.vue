@@ -94,7 +94,7 @@ export default {
             this.disableAnswers = true;
         },
         saveTest(){
-            axios.post(`tests`, { 
+            /* axios.post(`tests`, { 
                 userID: 1,
                 time: this.$store.state.time,
                 hits: this.$store.state.hits
@@ -103,7 +103,8 @@ export default {
                 if (response.success){
                     alert("Teste cadastrado com sucesso");
                 } 
-            });
+            }); */
+            this.$store.state.cpActiveTestArea = "result"
         }
     },
     watch:{
