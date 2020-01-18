@@ -7,8 +7,9 @@
 </template>
 
 <script>
-import testData from "@/mixins/testData"
+import testData from "@/mixins/testData";
+import general from "@/mixins/general";
 export default {
-    mixins: [testData]
+    mixins: [testData, general],
 }
 </script>

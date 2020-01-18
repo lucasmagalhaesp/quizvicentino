@@ -4,7 +4,7 @@
         <p>Acertos: {{ hits }}</p>
         <p>Tempo: {{ time }}</p>
         <h4 v-html="resultText"></h4>
-        <img src="" alt="">
+        <img :src="img" alt="">
         <b-button variant="primary" @click="playAgain">Jogar novamente</b-button>
         <b-button variant="info" @click="myTests">Meus testes</b-button>
         <b-button variant="secondary" @click="ranking">Ranking</b-button>
@@ -35,6 +35,11 @@ export default {
         },
         ranking(){
             this.$router.push({ name: "ranking" });
+        }
+    },
+    computed:{
+        img(){
+            return `images/result/${this.hits}.png`;
         }
     }
 }
