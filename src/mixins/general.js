@@ -6,7 +6,6 @@ export default {
     },
     methods:{
         formatDateBR: data => new Date(data.replace("-", ",")).toLocaleDateString('pt-BR'),
-        // formatDateTimeBR: 
         formatMoneyBR: valor => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
 
         formatDateTimeBR(date) {

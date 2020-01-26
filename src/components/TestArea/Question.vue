@@ -109,10 +109,6 @@ export default {
     },
     watch:{
         numQuestion(value){
-            if (value > 5){
-                console.log('resultado');debugger;
-            }
-
             this.getQuestion();
             this.$store.commit("startTimer", value);
             this.disableAnswers = false;
