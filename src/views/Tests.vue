@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <b-container>
-            <test-table></test-table>
-        </b-container>
-    </div>
+    <b-container>
+        <test-table></test-table>
+    </b-container>
 </template>
 
 <script>

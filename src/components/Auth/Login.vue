@@ -40,17 +40,24 @@ export default {
             axios.post("auth/login", { dados: this.form })
             .then(response => {
                 response = response.data;
-                if (response.success) alert(response.access_token);
-                else console.error(response.msg);
+                if (response.success) {
+                    sessionStorage.setItem("quiz_vtoken", response.access_token);
+                    this.$router.push({ name: "test-area" });
+                }else console.error(response.msg);
             }).catch(error => {
                 let errors = error.response.data.errors ? error.response.data.errors : null;
                 if (errors != null){
-                    for (let campo in errors){
-                        this.inputError[campo.split(".")[1]].valid = false;
-                        this.inputError[campo.split(".")[1]].msgError = errors[campo][0];
+                    if (errors == "Unauthorized"){
+                        this.inputError.password.valid = false;
+                        this.inputError.password.msgError = "Usuário e/ou senha incorretos";
+                    }else{
+                        for (let campo in errors){
+                            this.inputError[campo.split(".")[1]].valid = false;
+                            this.inputError[campo.split(".")[1]].msgError = errors[campo][0];
+                        }
                     }
                 }else{
-                    console.error("Erro ao cadastrar usuário: "+response);
+                    console.error("Erro ao cadastrar usuário: "+error);
                 }
             });
         },

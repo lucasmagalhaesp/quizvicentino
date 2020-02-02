@@ -15,6 +15,6 @@ export default {
         redirectToGame(){
             this.$store.state.cpActiveTestArea = "question"
         }
-    }
+    },
 }
 </script>

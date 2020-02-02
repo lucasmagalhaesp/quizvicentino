@@ -1,25 +1,23 @@
 <template>
   <div>
     <b-container class='mb-3'>
-      <component :is="comp"></component>
+      <h2>Quiz Vicentino!!!</h2>
     </b-container>
-    <b-button variant="info" @click="comp = 'Register'">Cadastro</b-button>
-    <b-button variant="primary" @click="comp = 'Login'">Login</b-button>
+    <b-button variant="info" @click="register">Cadastro</b-button>
+    <b-button variant="primary" @click="login">Login</b-button>
   </div>
 </template>
 
 <script>
-import Register from "@/components/Auth/Register.vue";
-import Login from "@/components/Auth/Login.vue";
 export default {
-  name: 'home',
-  components: {
-    Register, Login
-  },
-  data(){
-    return {
-      comp: "Login"
+  methods:{
+    register(){
+      this.$router.push("/register");
+    },
+    login(){
+      this.$router.push("/login");
     }
-  }
+  }  
+
 }
 </script>
