@@ -1,6 +1,7 @@
 <template>
     <b-container>
-        <component :is="'FormQuestions'"></component>
+        <table-questions></table-questions>
+        <form-questions></form-questions>
     </b-container>
 </template>
 

@@ -1,44 +1,38 @@
 <template>
-  <b-row class="justify-content-md-center">
+  <b-row class="justify-content-md-center" v-if="formQuestionActive">
         <b-col md="8">
             <b-form>
                 <b-row>
                     <b-col md="12">
-                        <label for="question">Pergunta:</label>
-                        <b-form-textarea id="question" v-model="form.description" type="text" required :state="inputError.description.valid" aria-describedby="input-live-help input-description-feedback"></b-form-textarea>
-                        <b-form-invalid-feedback id="input-description-feedback">{{ inputError.description.msgError }}</b-form-invalid-feedback>
+                        <label for="question">Pergunta{{ questionID > 0 ? " nº "+questionID : "" }}:</label>
+                        <b-form-textarea id="question" v-model="form.description" type="text"></b-form-textarea>
                     </b-col>
                 </b-row>
                 <b-row>
                     <b-col>
                         <label for="answerA">Resposta A:</label>
-                        <b-form-textarea v-model="form.answers.a" id="answerA" required :state="inputError.answerA.valid" aria-describedby="input-live-help input-answerA-feedback"></b-form-textarea>
-                        <b-form-invalid-feedback id="input-answerA-feedback">{{ inputError.answerA.msgError }}</b-form-invalid-feedback>
+                        <b-form-textarea v-model="form.answers.a" id="answerA"></b-form-textarea>
                     </b-col>
                     <b-col>
                         <label for="answerB">Resposta B:</label>
-                        <b-form-textarea v-model="form.answers.b" id="answerB" required :state="inputError.answerB.valid" aria-describedby="input-live-help input-answerB-feedback"></b-form-textarea>
-                        <b-form-invalid-feedback id="input-answerB-feedback">{{ inputError.answerB.msgError }}</b-form-invalid-feedback>
+                        <b-form-textarea v-model="form.answers.b" id="answerB"></b-form-textarea>
                     </b-col>
                 </b-row>
                 <b-row>
                     <b-col>
                         <label for="answerC">Resposta C:</label>
-                        <b-form-textarea v-model="form.answers.c" id="answerC" required :state="inputError.answerC.valid" aria-describedby="input-live-help input-answerC-feedback"></b-form-textarea>
-                        <b-form-invalid-feedback id="input-answerC-feedback">{{ inputError.answerC.msgError }}</b-form-invalid-feedback>
+                        <b-form-textarea v-model="form.answers.c" id="answerC"></b-form-textarea>
                     </b-col>
                     <b-col>
                         <label for="answerD">Resposta D:</label>
-                        <b-form-textarea v-model="form.answers.d" id="answerD" required :state="inputError.answerD.valid" aria-describedby="input-live-help input-answerD-feedback"></b-form-textarea>
-                        <b-form-invalid-feedback id="input-answerD-feedback">{{ inputError.answerD.msgError }}</b-form-invalid-feedback>
+                        <b-form-textarea v-model="form.answers.d" id="answerD"></b-form-textarea>
                     </b-col>
                 </b-row>
 
                 <b-row>
                     <b-col>
                         <label for="expiration_date">Data de validade:</label>
-                        <b-form-input type="date" v-model="form.expiration_date" id="expiration_date" :state="inputError.expirationDate.valid" aria-describedby="input-live-help input-expirationDate-feedback"></b-form-input>
-                        <b-form-invalid-feedback id="input-expirationDate-feedback">{{ inputError.expirationDate.msgError }}</b-form-invalid-feedback>
+                        <b-form-input type="date" v-model="form.expiration_date" id="expiration_date"></b-form-input>
                     </b-col>
                     <b-col>
                         <b-form-group label="Resposta Certa:">
@@ -57,8 +51,8 @@
                     </b-col>
                     <b-col>
                         <b-button-group>
-                            <b-button variant="success" @click="save">Cadastrar</b-button>
-                            <b-button variant="danger" @click="''">Cancelar</b-button>
+                            <b-button variant="success" @click="save">{{ questionID > 0 ? "Atualizar" : "Cadastrar"}}</b-button>
+                            <b-button variant="danger" @click="formQuestionActive = false">Cancelar</b-button>
                         </b-button-group>
                     </b-col>
                 </b-row>
@@ -89,58 +83,79 @@ export default {
                 { text: 'C', value: 'c' },
                 { text: 'D', value: 'd' }
             ],
-            inputError:{
-                description:{
-                    valid: null,
-                    msgError: ""
-                },
-                answerA: {
-                    valid: null,
-                    msgError: ""
-                },
-                answerB: {
-                    valid: null,
-                    msgError: ""
-                },
-                answerC: {
-                    valid: null,
-                    msgError: ""
-                },
-                answerD: {
-                    valid: null,
-                    msgError: ""
-                },
-                expirationDate:{
-                    valid: null,
-                    msgError: ""
-                }
-            }
         }
     },
     methods:{
         save(){
-            this.cleanErrors();
-            axios.post("questions", { dados: this.form })
-            .then(response => {
-                response = response.data;
-                if (response.success) alert("Pergunta cadastrada com sucesso");
-                else console.error(response.msg);
-            }).catch(error => {
-                let errors = error.response.data.errors ? error.response.data.errors : null;
-                if (errors != null){
-                    for (let campo in errors){
-                        this.inputError[campo.split(".")[1]].valid = false;
-                        this.inputError[campo.split(".")[1]].msgError = errors[campo][0];
-                    }
-                }else{
-                    console.error("Erro ao cadastrar usuário: "+response);
-                }
-            });
+            if (this.questionID > 0){
+                axios.put(`questions/${this.questionID}`, {
+                    dados: this.form
+                }).then(response => {
+                    response = response.data;
+                    if (response.success) this.formQuestionActive = false;
+                    else console.error(response.msg);
+                }).catch(error => console.error("Erro ao atualizar pergunta: "+response));
+            }else{
+                axios.post("questions", { dados: this.form })
+                .then(response => {
+                    response = response.data;
+                    if (response.success) this.formQuestionActive = false;
+                    else console.error(response.msg);
+                }).catch(error => console.error("Erro ao cadastrar pergunta: "+response));
+            }
         },
-        cleanErrors(){
-            for (let campo in this.inputError){
-                this.inputError[campo].valid = null;
-                this.inputError[campo].msgError = "";
+        cleanFields(){
+            this.form.description = "";
+            for (let field in this.form.answers){
+                this.form.answers[field] = "";
+            }
+            this.form.active = true;
+            this.form.expiration_date = null;
+            this.form.correctAnswer = "a";
+        }
+    },
+    computed:{
+        questionID:{
+            get(){
+                return this.$store.state.questionEditID;
+            },
+            set(value){
+                this.$store.state.questionEditID = value;
+            }
+        },
+        formQuestionActive:{
+            get(){
+                return this.$store.state.formQuestionActive;
+            },
+            set(value){
+                this.$store.state.formQuestionActive = value;
+            }
+        }
+    },
+    watch:{
+        questionID(value){
+            if (value > 0){
+                axios(`questions/${value}/edit`, {params:{ id: value }})
+                .then(response => {
+                    response = response.data;
+                    if (response.success){
+                        let question = response.question;
+                        let answers = response.answers;
+                        let correctAnswer = response.correctAnswer;
+
+                        this.form.description = question.description;
+                        this.form.active = question.active == "S";
+                        this.form.expiration_date = question.expiration_date;
+
+                        let options = ["a", "b", "c", "d"];
+                        answers.forEach((answer, index) => {
+                            this.form.answers[options[index]] = answer.description;
+                            if (correctAnswer == answer.id) this.form.correctAnswer = options[index];
+                        });
+                    }
+                }).catch(error => console.error(error));
+            }else{
+                this.cleanFields();
             }
         }
     }
