@@ -137,7 +137,6 @@ export default {
                 .then(response => console.error(response));
             }
         },
-        
     },
     computed:{
         questionID:{

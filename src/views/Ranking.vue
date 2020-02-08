@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <b-container>
-            <ranking-table></ranking-table>
-        </b-container>
-    </div>
+    <b-container>
+        <ranking-table></ranking-table>
+    </b-container>
 </template>
 
 <script>
