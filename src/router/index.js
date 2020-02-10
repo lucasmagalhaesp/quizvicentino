@@ -12,6 +12,8 @@ import Register from '../views/Register.vue'
 import Questions from '../views/Admin/Questions.vue'
 import Users from '../views/Admin/Users.vue'
 import AllTests from '../views/Admin/Tests.vue'
+import ResetPassword from '../views/ResetPassword.vue'
+import ForgotPassword from '../views/ForgotPassword.vue'
 
 Vue.use(VueRouter)
 
@@ -52,6 +54,16 @@ const routes = [
     component: Ranking
   },
   {
+    path: '/reset-password',
+    name: 'resetPassword',
+    component: ResetPassword
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgotPassword',
+    component: ForgotPassword
+  },
+  {
     path: '/admin/questions',
     name: 'questions',
     component: Questions
@@ -66,7 +78,7 @@ const routes = [
     name: 'all-tests',
     component: AllTests
   },
-  {
+  /* {
     path: '/admin',
     //name: 'admin',
     //component: Admin,
@@ -92,7 +104,7 @@ const routes = [
         component: Users,
       }
     ]
-  },
+  }, */
   {
     path: '/contact',
     name: 'contact',
@@ -107,7 +119,7 @@ const router = new VueRouter({
   routes
 })
 
-let publicRoutes = ["/", "/contact", "/about", "/login", "/register"];
+let publicRoutes = ["/", "/contact", "/about", "/login", "/register", "/reset-password", "/forgot-password"];
 let privateRoutes = ["/test-area", "/tests", "/ranking", "/admin"];
 
 router.beforeEach((to, from, next) => {
