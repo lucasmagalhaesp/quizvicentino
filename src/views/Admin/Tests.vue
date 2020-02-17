@@ -1,14 +1,14 @@
 <template>
-    <div>
-        <tests></tests>
-    </div>
+    <b-container>
+        <test-table type="all"></test-table>
+    </b-container>
 </template>
 
 <script>
-import Tests from "@/components/Admin/Tests"
+import TestTable from "@/components/Tests/TestTable.vue"
 export default {
     components:{
-        Tests
+        TestTable
     }
 }
 </script>

@@ -40,7 +40,7 @@ export default {
             axios.post("auth/login", { dados: this.form })
             .then(response => {
                 response = response.data;
-                if (response.success) {
+                if (response.success) { 
                     sessionStorage.setItem("quiz_vtoken", response.access_token);
                     this.$router.push({ name: "test-area" });
                 }else console.error(response.msg);

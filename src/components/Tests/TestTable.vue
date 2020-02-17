@@ -1,6 +1,5 @@
 <template>
     <div>
-        
         <b-table
             :fields="fields"
             :items="tests"
@@ -39,6 +38,7 @@ import general from "@/mixins/general";
 import testData from "@/mixins/testData";
 export default {
     mixins: [general, testData],
+    props:["type"],
     data(){
         return {
             tests: [],
@@ -65,8 +65,13 @@ export default {
         }
     },
     created(){
+        let url = this.type == "all" ? "tests": "tests/myTests";
         this.busy = true;
-        axios("tests").then(response => {
+        axios(url, {
+                headers: {
+                    Authorization: 'Bearer '+sessionStorage.getItem("quiz_vtoken")
+                }
+            }).then(response => {
             let resposta = response.data;
             if (resposta.success){
                 this.tests = resposta.tests;

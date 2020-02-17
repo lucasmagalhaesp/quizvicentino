@@ -1,6 +1,6 @@
 <template>
     <b-container>
-        <test-table></test-table>
+        <test-table type="user"></test-table>
     </b-container>
 </template>
 

@@ -94,17 +94,18 @@ export default {
             this.disableAnswers = true;
         },
         saveTest(){
-            /* axios.post(`tests`, { 
-                userID: 1,
+            axios.post(`tests`, { 
+                token: sessionStorage.getItem("quiz_vtoken"),
                 time: this.$store.state.time,
-                hits: this.$store.state.hits
+                hits: this.$store.state.hits, 
+               /*  headers: {
+                    Authorization: 'Bearer '+sessionStorage.getItem("quiz_vtoken")
+                } */
             }).then(response => {
                 response = response.data;
-                if (response.success){
-                    alert("Teste cadastrado com sucesso");
-                } 
-            }); */
-            this.$store.state.cpActiveTestArea = "result"
+                if (response.success) this.$store.state.cpActiveTestArea = "result"
+            });
+            
         }
     },
     watch:{
