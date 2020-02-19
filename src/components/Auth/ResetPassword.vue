@@ -1,7 +1,10 @@
 <template>
-    <b-row class="justify-content-md-center">
-        <b-col md="6">
-            <b-form>
+    <b-row class="margin-vert-30">
+        <b-col class="col-md-6 col-md-offset-3 col-sm-offset-3">
+            <b-form class="login-page">
+                <div class="login-header margin-bottom-30">
+                    <h2>Redefinir Senha</h2>
+                </div>
                 <b-alert show variant="success" v-if="changedPassword">
                     Senha alterada com sucesso
                 </b-alert>
@@ -16,7 +19,11 @@
                 <b-form-input v-model="confirmPassword" type="password" required placeholder="Confirme sua senha" :state="inputError.confirmPassword.valid" aria-describedby="input-live-help input-confirmPassword-feedback"></b-form-input>
                 <b-form-invalid-feedback id="input-confirmPassword-feedback">{{ inputError.confirmPassword.msgError }}</b-form-invalid-feedback>
                
-                <b-button variant="primary" @click="resetPassword">Confirmar</b-button>
+                <b-row>
+                    <b-col>
+                        <b-button variant="primary" @click="resetPassword" class="pull-right" style="margin: 15px">Confirmar</b-button>
+                    </b-col>
+                </b-row>
             </b-form>
         </b-col>
     </b-row>

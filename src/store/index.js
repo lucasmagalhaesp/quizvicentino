@@ -12,7 +12,7 @@ export default new Vuex.Store({
     cpActiveTestArea: 'instructions',
 
     questionEditID: 0,
-    formQuestionActive: false
+    formQuestionActive: false,
   },
   getters:{
 

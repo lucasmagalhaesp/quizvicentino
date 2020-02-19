@@ -1,6 +1,12 @@
 <template>
-    <b-row class="justify-content-md-center">
-        <b-col md="6">
+    <b-row class="margin-vert-30">
+        <b-col md="12">
+            <div class="headline">
+                <h2>Contato</h2>
+            </div>
+        </b-col>
+        <b-col md="8">
+            <p>Entre em contato conosco. Envie dúvidas, críticas ou sugestões para melhorarmos o site.</p>
             <b-alert show variant="success" v-if="msgSuccess">Mensagem enviada com sucesso! Responderemos em breve</b-alert>
             <b-alert show variant="danger" v-if="msgError">Erro ao enviar mensagem! Favor tentar novamente</b-alert>
             <b-form>
@@ -15,9 +21,38 @@
 
                 <b-form-textarea v-model="form.message" required placeholder="Mensagem" :state="inputError.message.valid" aria-describedby="input-live-help input-message-feedback"></b-form-textarea>
                 <b-form-invalid-feedback id="input-message-feedback">{{ inputError.message.msgError }}</b-form-invalid-feedback>
-
-                <b-button variant="success" @click="send">Enviar</b-button>
+                <b-row>
+                    <b-col>
+                        <b-button variant="primary" @click="send" class="pull-right" style="margin: 15px">Enviar</b-button>
+                    </b-col>
+                </b-row>
             </b-form>
+        </b-col>
+        <b-col md="4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Outras formas de contato</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Além do formulário abaixo, você também pode entrar em contato diretamente conosco através dos meios abaixo:</p>
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fa-phone color-primary"></i>(31) 99158-4150</li>
+                        <li>
+                            <i class="fa-envelope color-primary"></i>contato@quizvicentino.com.br</li>
+                        <li>
+                            <i class="fa-home color-primary"></i>http://www.quizvicentino.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Sobre o Quiz</h3>
+                </div>
+                <div class="panel-body">
+                    O QUIZ VICENTINO é um método criado para testar os conhecimentos dos vicentinos sobre a Sociedade de São Vicente de Paulo e outros assuntos relacionados.
+                </div>
+            </div> -->
         </b-col>
     </b-row>
 </template>

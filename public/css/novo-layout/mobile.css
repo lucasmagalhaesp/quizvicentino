@@ -1,0 +1,13 @@
+@media (max-width: 768px){/*tablet*/
+    
+}
+@media (max-width: 576px){/*celular*/
+    #btn_proxima, #btn_confirmar, #btn_sair, #btn_novo_teste, #btn_relatorio, #btn_ranking, #btn_iniciar{
+        padding: 8px 10px;
+        font-size: 15px;
+        line-height: 1.5;
+        border-radius: 3px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

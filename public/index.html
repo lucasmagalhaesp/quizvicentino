@@ -1,17 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="pt">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>quizvicentino</title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but quizvicentino doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Lucas Magalhães de Paula">
+    <!-- Favicon -->
+    <link href="favicon.ico" rel="shortcut icon">
+
+    <link rel="stylesheet" href="/css/novo-layout/bootstrap.css">
+    <link rel="stylesheet" href="/css/novo-layout/animate.css">
+    <link rel="stylesheet" href="/css/novo-layout/font-awesome.css">
+    <link rel="stylesheet" href="/css/novo-layout/nexus.css">
+    <link rel="stylesheet" href="/css/novo-layout/responsive.css">
+    <link rel="stylesheet" href="/css/novo-layout/custom.css">
+    <link rel="stylesheet" href="/css/novo-layout/mobile.css">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Quiz Vicentino</title>
+
+    <style>
+        body {
+            font-family: 'Helvetica';
+        }
+
+        .fa-btn {
+            margin-right: 6px;
+        }
+
+        @media (min-width: 450px) {
+            .logoff-mobile{
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    
     <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <script src="/js/novo-layout/jquery.min.js"></script>
+    <script src="/js/novo-layout/bootstrap.min.js"></script>
+    <script src="/js/novo-layout/scripts.js"></script>
+    <script src="/js/novo-layout/jquery.isotope.js"></script>
+    <script src="/js/novo-layout/jquery.slicknav.js"></script>
+    <script src="/js/novo-layout/jquery.visible.js"></script>
+    <script src="/js/novo-layout/modernizr.custom.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <script>
+        let data = new Date();
+        let ano = data.getFullYear();
+        document.querySelector("#ano-atual").innerHTML = ano;
+    </script> -->
+</body>
 </html>

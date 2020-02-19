@@ -54,7 +54,7 @@ const routes = [
     component: Ranking
   },
   {
-    path: '/reset-password',
+    path: '/reset-password/:token',
     name: 'resetPassword',
     component: ResetPassword
   },
@@ -123,7 +123,7 @@ let publicRoutes = ["/", "/contact", "/about", "/login", "/register", "/reset-pa
 let privateRoutes = ["/test-area", "/tests", "/ranking", "/admin"];
 
 router.beforeEach((to, from, next) => {
-  if (publicRoutes.includes(to.path)){
+  if (!privateRoutes.includes(to.path)){
     next()
   }else{
     axios.get("auth/me", {

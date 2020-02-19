@@ -1,15 +1,26 @@
 <template>
-    <b-row class="justify-content-md-center">
-        <b-col md="6">
-            <b-form>
+    <b-row class="margin-vert-30">
+        <b-col class="col-md-6 col-md-offset-3 col-sm-offset-3">
+            <b-form class="login-page">
+                <h2>Login</h2>
+                <p>Ainda não é cadastrado? Clique
+                    <router-link to="/register" tag="a" class="color-green">AQUI</router-link> e cadastre-se.
+                </p>
                 <b-form-input v-model="form.email" type="email" required placeholder="E-mail" :state="inputError.email.valid" aria-describedby="input-live-help input-email-feedback"></b-form-input>
                 <b-form-invalid-feedback id="input-email-feedback">{{ inputError.email.msgError }}</b-form-invalid-feedback>
                 
                 <b-form-input v-model="form.password" type="password" required placeholder="Senha" :state="inputError.password.valid" aria-describedby="input-live-help input-password-feedback"></b-form-input>
                 <b-form-invalid-feedback id="input-password-feedback">{{ inputError.password.msgError }}</b-form-invalid-feedback>
 
-                <b-button variant="success" @click="login">Entrar</b-button>
-            </b-form>
+                <b-row>
+                    <b-col>
+                        <b-button variant="primary" @click="login" class="pull-right" style="margin: 15px">Entrar</b-button>
+                    </b-col>
+                </b-row>
+                
+                <h4>Esqueceu sua senha?</h4>
+                <p><router-link to="/forgot-password" tag="a" class="color-green">Clique aqui</router-link> para recuperá-la</p>
+            </b-form>    
         </b-col>
     </b-row>
 </template>

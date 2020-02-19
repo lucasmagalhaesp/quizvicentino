@@ -1,7 +1,10 @@
 <template>
-    <b-row class="justify-content-md-center">
-        <b-col md="6">
-            <b-form>
+   <b-row class="margin-vert-30">
+        <b-col class="col-md-6 col-md-offset-3 col-sm-offset-3">
+            <b-form class="login-page">
+                <div class="login-header margin-bottom-30">
+                    <h2>Recuperar Senha</h2>
+                </div>
                 <b-alert show variant="primary" v-if="informEmailAlert">
                     Seu cadastro foi encontrado com sucesso. 
                     A partir agora, você precisará informar o seu e-mail para recuperar a senha e fazer login.
@@ -12,7 +15,11 @@
                 <label for="input-live" v-else>Informe o e-mail ou nome de usuário cadastrado para recuperar sua senha:</label>
                 <b-form-input v-model="email" type="email" required placeholder="E-mail" :state="valid" aria-describedby="input-live-help input-email-feedback"></b-form-input>
                 <b-form-invalid-feedback id="input-email-feedback">{{ msgError }}</b-form-invalid-feedback>
-                <b-button variant="primary" @click="forgotPassword">Recuperar Senha</b-button>
+                <b-row>
+                    <b-col>
+                        <b-button variant="primary" @click="forgotPassword" class="pull-right" style="margin: 15px">Recuperar Senha</b-button>
+                    </b-col>
+                </b-row>
             </b-form>
         </b-col>
     </b-row>

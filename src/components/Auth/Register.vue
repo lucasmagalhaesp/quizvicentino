@@ -1,7 +1,13 @@
 <template>
-    <b-row class="justify-content-md-center">
-        <b-col md="6">
-            <b-form>
+    <b-row class="margin-vert-30">
+        <b-col class="col-md-6 col-md-offset-3 col-sm-offset-3">
+            <b-form class="signup-page">
+                <div class="signup-header">
+                    <h2>Cadastre-se</h2>
+                    <p>Já é cadastrado? Clique
+                        <router-link to="/login" class="color-green">AQUI</router-link> para fazer login.
+                    </p>
+                </div>
                 <b-form-input v-model="form.name" type="text" required placeholder="Nome" :state="inputError.name.valid" aria-describedby="input-live-help input-name-feedback"></b-form-input>
                 <b-form-invalid-feedback id="input-name-feedback">{{ inputError.name.msgError }}</b-form-invalid-feedback>
                 
@@ -20,7 +26,11 @@
                 <b-form-input v-model="form.confirmPassword" type="password" required placeholder="Confirme sua senha" :state="inputError.confirmPassword.valid" aria-describedby="input-live-help input-confirmPassword-feedback"></b-form-input>
                 <b-form-invalid-feedback id="input-confirmPassword-feedback">{{ inputError.confirmPassword.msgError }}</b-form-invalid-feedback>
                 
-                <b-button variant="success" @click="register">Cadastrar</b-button>
+                <b-row>
+                    <b-col>
+                        <b-button variant="primary" @click="register" class="pull-right" style="margin: 15px">Cadastrar</b-button>
+                    </b-col>
+                </b-row>
             </b-form>
         </b-col>
     </b-row>

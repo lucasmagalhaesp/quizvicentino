@@ -1,6 +1,6 @@
 <template>
-  <b-row class="justify-content-md-center" v-if="formQuestionActive">
-        <b-col md="8">
+  <b-row v-if="formQuestionActive">
+        <b-col md="8" class="col-md-offset-2">
             <b-form>
                 <b-row>
                     <b-col md="12">
@@ -9,52 +9,53 @@
                     </b-col>
                 </b-row>
                 <b-row>
-                    <b-col>
+                    <b-col md="6">
                         <label for="answerA">Resposta A:</label>
                         <b-form-textarea v-model="form.answers.a" id="answerA"></b-form-textarea>
                     </b-col>
-                    <b-col>
+                    <b-col md="6">
                         <label for="answerB">Resposta B:</label>
                         <b-form-textarea v-model="form.answers.b" id="answerB"></b-form-textarea>
                     </b-col>
                 </b-row>
                 <b-row>
-                    <b-col>
+                    <b-col md="6">
                         <label for="answerC">Resposta C:</label>
                         <b-form-textarea v-model="form.answers.c" id="answerC"></b-form-textarea>
                     </b-col>
-                    <b-col>
+                    <b-col md="6">
                         <label for="answerD">Resposta D:</label>
                         <b-form-textarea v-model="form.answers.d" id="answerD"></b-form-textarea>
                     </b-col>
                 </b-row>
 
                 <b-row>
-                    <b-col>
+                    <b-col md="4">
                         <label for="expiration_date">Data de validade:</label>
                         <b-form-input type="date" v-model="form.expiration_date" id="expiration_date"></b-form-input>
                     </b-col>
-                    <b-col>
-                        <b-form-group label="Resposta Certa:">
-                            <b-form-radio-group
-                                id="correct_answer"
-                                v-model="form.correctAnswer"
-                                :options="answers"
-                                buttons
-                                button-variant="outline-primary"
-                                name="radio-btn-stacked"
-                            ></b-form-radio-group>
-                        </b-form-group>
+                    <b-col md="6">
+                        <label for="expiration_date">Resposta Certa:</label>
+                        <b-form-radio-group
+                            id="correct_answer"
+                            v-model="form.correctAnswer"
+                            :options="answers"
+                            buttons
+                            button-variant="outline-primary"
+                            name="radio-btn-stacked"
+                        ></b-form-radio-group>
                     </b-col>
                     <b-col>
                         <b-form-checkbox v-model="form.active" switch size="lg">Ativa?</b-form-checkbox>
                     </b-col>
-                    <b-col>
-                        <b-button-group>
-                            <b-button variant="success" @click="save">{{ questionID > 0 ? "Atualizar" : "Cadastrar"}}</b-button>
-                            <b-button variant="danger" @click="formQuestionActive = false">Cancelar</b-button>
-                        </b-button-group>
-                    </b-col>
+                    <b-row>
+                        <b-col md="12" style="margin-top: 20px">
+                            <b-button-group>
+                                <b-button variant="success" @click="save">{{ questionID > 0 ? "Atualizar" : "Cadastrar"}}</b-button>
+                                <b-button variant="danger" @click="formQuestionActive = false">Cancelar</b-button>
+                            </b-button-group>
+                        </b-col>
+                    </b-row>
                 </b-row>
             </b-form>
         </b-col>
