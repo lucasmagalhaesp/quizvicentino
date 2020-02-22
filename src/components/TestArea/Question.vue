@@ -8,26 +8,27 @@
         <b-col md="8">
             <timer></timer>
         </b-col>
-        <b-row align-h="end">
-            <b-col>
-                <test-data></test-data>
-            </b-col>
-        </b-row>
+        <b-col md="4" class="text-right">
+            <test-data></test-data>
+        </b-col>
         <b-col md="12">
             <h6>{{ currentQuestion.question.description }}</h6>
             <b-form-group>
                 <b-form-radio v-for="(answer, index) in currentQuestion.answers" :key="index" v-model="userResponse" name="answer" :value="answer.id" :disabled="disableAnswers" class="question-options">{{ answer.description }}</b-form-radio>
             </b-form-group>
         </b-col>
-        <b-col md="12">
+        <b-col md="4" class="text-center col-md-offset-4">
             <b-alert show variant="success" v-if="response == 'ok'">VOCÊ ACERTOU!!!</b-alert>
             <b-alert show variant="danger" v-if="response == 'error'">VOCÊ ERROU!!!</b-alert>
         </b-col>
-        <b-col v-if="!testEnd" md="12" class="text-center">
-            <b-button variant="success" v-if="activateTimer" @click="getCorrectResponse">Confirmar</b-button>
-            <b-button variant="info" v-if="!activateTimer" @click="numQuestion++">Próxima</b-button>
+        <b-col md="12" class="text-center">
+            <template v-if="!testEnd">    
+                <b-button variant="success" v-if="activateTimer" @click="getCorrectResponse">Confirmar</b-button>
+                <b-button variant="info" v-if="!activateTimer" @click="numQuestion++">Próxima</b-button>
+            </template>
+            <b-button variant="primary" v-else @click="saveTest">Resultado</b-button>
         </b-col>
-        <b-button variant="primary" v-else @click="saveTest">Resultado</b-button>
+        
         <!-- <b-button variant="danger">Sair</b-button> -->
     </b-row>
 

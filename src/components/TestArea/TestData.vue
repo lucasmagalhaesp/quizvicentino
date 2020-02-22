@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-badge variant="primary">Acertos: {{ hits }}</b-badge>
+        <b-badge variant="primary" style="margin-right: 10px">Acertos: {{ hits }}</b-badge>
         <b-badge variant="primary">Tempo gasto: {{ time }}</b-badge>
     </div>
     

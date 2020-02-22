@@ -42,6 +42,9 @@
                             {{ Auth::user()->name }} - <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Fazer Logoff</a>
                         @endif
                     </p> -->
+                    <p class="site-slogan" v-if="logged">
+                        {{ name }} - <a href="#" @click="logoff"><i class="fa fa-btn fa-sign-out"></i>Fazer Logoff</a>
+                    </p>
                     <!-- End Slogan -->
                     <!-- Top Menu -->
                     <div class="row">
@@ -50,21 +53,20 @@
                                 <ul id="hornavmenu" class="nav navbar-nav">
                                     <li><router-link to="/" tag="a">Home</router-link></li>
                                     <li><router-link to="/test-area">Jogar</router-link></li>
-                                    <li><router-link to="/tests">Testes</router-link></li>
-                                    <li><router-link to="/ranking">Ranking</router-link></li>
-                                    <li><router-link to="/contact">Contato</router-link></li>
-                                    <li><router-link to="/about">Sobre</router-link></li>
-                                        <!-- <li class="dropdown">
+                                    <li><router-link to="/tests" v-if="logged">Testes</router-link></li>
+                                    <li><router-link to="/ranking" v-if="logged">Ranking</router-link></li>
+                                    <li class="dropdown" v-if="isAdmin">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                                 Área restrita
                                             </a>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#"><i class="fa fa-btn fa-user"></i>Usuários</a></li>
-                                                <li><a href="#"><i class="fa fa-btn fa-file-pdf-o"></i>Testes</a></li>
-                                                <li><a href="#"><i class="fa fa-btn fa-question"></i>Perguntas</a></li>
+                                                <li><router-link to="/admin/users">Usuários</router-link></li>
+                                                <li><router-link to="/admin/tests">Testes</router-link></li>
+                                                <li><router-link to="/admin/questions">Perguntas</router-link></li>
                                             </ul>
-                                        </li> -->
-                                    <!-- <li class="logoff-mobile"><a href="#">Sair</a></li> -->
+                                        </li>
+                                    <li><router-link to="/contact">Contato</router-link></li>
+                                    <li><router-link to="/about">Sobre</router-link></li>
                                 </ul>
                             </div>
                         </div>
@@ -152,7 +154,36 @@
 <script>
   import Content from "@/components/Body.vue";
   export default {
-    components: { Content } 
+    components: { Content },
+    computed:{
+        isAdmin(){
+            return this.$store.state.isAdmin
+        },
+        logged(){
+            return this.$store.state.logged
+        },
+        name(){
+            return sessionStorage.getItem("quiz_vname")
+        }
+    },
+    methods:{
+        logoff(){
+            axios(`auth/logout`,{
+                headers: {
+                    Authorization: 'Bearer '+sessionStorage.getItem("quiz_vtoken")
+                }
+            }).then(response => {
+                response = response.data;
+                if (response.success) {
+                    sessionStorage.removeItem("quiz_vtoken");
+                    sessionStorage.removeItem("quiz_vname");
+                    this.$store.state.isAdmin = false;
+                    this.$store.state.logged = false;
+                    this.$router.push({ name: "home" });
+                }
+            }).catch(error => console.error(error));
+        }
+    }
   }
 </script>
 

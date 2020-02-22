@@ -53,6 +53,9 @@ export default {
                 response = response.data;
                 if (response.success) { 
                     sessionStorage.setItem("quiz_vtoken", response.access_token);
+                    sessionStorage.setItem("quiz_vname", response.name);
+                    this.$store.state.isAdmin = response.isAdmin == "S" ? true : false;
+                    this.$store.state.logged = true;
                     this.$router.push({ name: "test-area" });
                 }else console.error(response.msg);
             }).catch(error => {
