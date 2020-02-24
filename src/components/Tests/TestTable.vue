@@ -52,14 +52,14 @@ export default {
                 totalRecords: 1,
             },
             fields: [
-                { key: "testNum", label: "Núm.", sortable: true },
-                { key: "created_at", label: "Data/Hora", sortable: true,
+                { key: "testNum", label: "Núm.", sortable: true, class: "text-center" },
+                { key: "created_at", label: "Data/Hora", sortable: true, class: "text-center",
                     formatter: (value, key, item) => {
                         return this.formatDateTimeBR(value);
                     } 
                 },
-                { key: "points", label: "Acertos", sortable: true },
-                { key: "time", label: "Tempo", sortable: true,
+                { key: "points", label: "Acertos", sortable: true, class: "text-center" },
+                { key: "time", label: "Tempo", sortable: true, class: "text-center",
                     formatter: (value, key, item) => {
                         return this.convertSecondsinMinutes(value);
                     } 

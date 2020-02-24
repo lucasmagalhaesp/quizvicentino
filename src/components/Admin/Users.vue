@@ -24,7 +24,7 @@
 
             <!-- Paginação -->
             <b-row class="mt-3">
-                <b-col md="4">
+                <b-col md="5">
                     <b-pagination
                         v-model="pagination.currentPage"
                         :total-rows="pagination.totalRecords"
@@ -52,12 +52,12 @@ export default {
                 totalRecords: 1,
             },
             fields: [
-                { key: "id", label: "Cód.", sortable: true },
-                { key: "name", label: "Nome", sortable: true },
-                { key: "email", label: "E-mail", sortable: true },
-                { key: "city", label: "Cidade", sortable: true },
-                { key: "state", label: "UF", sortable: true },
-                { key: "created_at", label: "Cadastrado em", sortable: true,
+                { key: "id", label: "Cód.", sortable: true, class: "text-center" },
+                { key: "name", label: "Nome", sortable: true, class: "text-center" },
+                { key: "email", label: "E-mail", sortable: true, class: "text-center" },
+                { key: "city", label: "Cidade", sortable: true, class: "text-center" },
+                { key: "state", label: "UF", sortable: true, class: "text-center" },
+                { key: "created_at", label: "Cadastrado em", sortable: true, class: "text-center",
                     formatter: (value, key, item) => {
                         return this.formatDateBR(value);
                     } 

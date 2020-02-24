@@ -25,12 +25,16 @@
 <script>
 export default {
     created(){
+        console.log("instruções");
         this.$store.state.hits = 0;
         this.$store.state.time = 0;
+        this.$store.state.activateTimer = false;
+        this.$store.state.timeLeft = 60;
     },
     methods:{
         redirectToGame(){
-            this.$store.state.cpActiveTestArea = "question"
+            this.$store.state.isQuestionArea = true;
+            this.$store.state.cpActiveTestArea = "question";
         }
     },
 }

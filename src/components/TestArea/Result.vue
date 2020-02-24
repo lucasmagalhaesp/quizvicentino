@@ -43,6 +43,7 @@ export default {
         }
     },
     created(){
+        this.$store.state.isQuestionArea = false;
         axios(`tests/resultText/${this.hits}`).then(response => {
             response = response.data;
             if (response.success) this.resultText = response.data;

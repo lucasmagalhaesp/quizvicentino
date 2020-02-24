@@ -50,17 +50,17 @@ export default {
                 totalRecords: 1,
             },
             fields: [
-                { key: "testNum", label: "Núm." },
-                { key: "name", label: "Nome" },
-                { key: "email", label: "E-mail" },
-                { key: "city", label: "Cidade" },
-                { key: "points", label: "Acertos" },
-                { key: "time", label: "Tempo",
+                { key: "testNum", label: "Núm.", class: "text-center" },
+                { key: "name", label: "Nome", class: "text-center" },
+                { key: "email", label: "E-mail", class: "text-center" },
+                { key: "city", label: "Cidade", class: "text-center" },
+                { key: "points", label: "Acertos", class: "text-center" },
+                { key: "time", label: "Tempo", class: "text-center",
                     formatter: (value, key, item) => {
                         return this.convertSecondsinMinutes(value);
                     }
                 },
-                { key: "created_at", label: "Data/Hora",
+                { key: "created_at", label: "Data/Hora", class: "text-center",
                     formatter: (value, key, item) => {
                         return this.formatDateTimeBR(value);
                     }

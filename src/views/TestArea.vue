@@ -16,6 +16,9 @@
         components:{
             Question, Result, Instructions
         },
+        created(){
+            this.$store.state.isQuestionArea = false;
+        },
         computed:{
             cpActiveTestArea(){
                 return this.$store.state.cpActiveTestArea

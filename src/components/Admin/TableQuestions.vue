@@ -6,8 +6,8 @@
             </div>
         </b-col>
         
-        <b-col md="12">
-            <div v-if="!formQuestionActive">
+        <b-col md="12" v-if="!formQuestionActive">
+            <div>
                 <b-table
                     :fields="fields"
                     :items="questions"
@@ -23,7 +23,7 @@
                     </template>
 
                     <template v-slot:cell(edtExc)="row">
-                        <b-button-group size="sm">
+                        <b-button-group size="sm" style="width: 80px">
                             <b-button variant="primary" title="Editar" @click="edit(row.item.id)"><i class="fas fa-edit"></i></b-button>
                             <b-button variant="danger" title="Excluir" @click="remove(row.item.id)"><i class="fas fa-trash-alt"></i></b-button>
                         </b-button-group>
@@ -32,7 +32,7 @@
 
                 <!-- Paginação -->
                 <b-row class="mt-3">
-                    <b-col md="4">
+                    <b-col md="5">
                         <b-pagination
                             v-model="pagination.currentPage"
                             :total-rows="pagination.totalRecords"
@@ -42,8 +42,8 @@
                             md="6"
                         ></b-pagination>
                     </b-col>
-                    <b-col md="1" offset-md="7">
-                        <b-button variant="info" @click="newQuestion"><i class="fas fa-plus"></i></b-button>
+                    <b-col md="2" class="col-md-offset-5 text-right">
+                        <b-button variant="info" @click="newQuestion" class="addQuestion"><i class="fas fa-plus"></i> Pergunta</b-button>
                     </b-col>
                 </b-row>
                 <!-- Modal para confirmação de exclusão -->
@@ -92,12 +92,12 @@ export default {
                         return value == "S" ? "Sim" : "Não";
                     }
                 },
-                { key: "expiration_date", label: "Expira em:", sortable: true,
+                { key: "expiration_date", label: "Expira em:", sortable: true, class: "text-nowrap",
                     formatter: (value, key, item) => {
                         return this.formatDateBR(value);
                     }
                 },
-                { key: "created_at", label: "Cadastrada em", sortable: true,
+                { key: "created_at", label: "Cadastrada em", sortable: true, class: "text-nowrap",
                     formatter: (value, key, item) => {
                         return this.formatDateBR(value);
                     } 
@@ -106,10 +106,10 @@ export default {
             busy: false,
             questionRemoveID: 0
         }
-    },
+    },/* 
     created(){
         this.questionList();
-    },
+    }, */
     methods:{
         questionList(){
             this.busy = true;
@@ -159,7 +159,9 @@ export default {
         },
         formQuestionActive:{
             get(){
-                return this.$store.state.formQuestionActive;
+                let formQuestionActive = this.$store.state.formQuestionActive;
+                if (!formQuestionActive) this.questionList();
+                return formQuestionActive;
             },
             set(value){
                 this.$store.state.formQuestionActive = value;
@@ -169,3 +171,8 @@ export default {
 
 }
 </script>
+<style>
+    .addQuestion{
+        margin: 20px 0
+    }
+</style>

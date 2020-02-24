@@ -9,6 +9,7 @@ export default new Vuex.Store({
     timeLeft: 60,
     hits: 0,
     time: 0,
+    isQuestionArea: false,
     cpActiveTestArea: 'instructions',
     questionEditID: 0,
     formQuestionActive: false,
@@ -34,8 +35,7 @@ export default new Vuex.Store({
     },
     addTestTime(state){
       state.time += 60 - state.timeLeft;
-    }
-
+    },
   },
   actions: {
 

@@ -1,5 +1,5 @@
 <template>
-  <b-row v-if="formQuestionActive">
+    <b-row v-if="formQuestionActive" style="margin: -30px 0 30px">
         <b-col md="8" class="col-md-offset-2">
             <b-form>
                 <b-row>
@@ -49,7 +49,7 @@
                         <b-form-checkbox v-model="form.active" switch size="lg">Ativa?</b-form-checkbox>
                     </b-col>
                     <b-row>
-                        <b-col md="12" style="margin-top: 20px">
+                        <b-col md="12" style="margin-top: 20px" class="text-center">
                             <b-button-group>
                                 <b-button variant="success" @click="save">{{ questionID > 0 ? "Atualizar" : "Cadastrar"}}</b-button>
                                 <b-button variant="danger" @click="formQuestionActive = false">Cancelar</b-button>

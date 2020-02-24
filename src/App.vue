@@ -37,13 +37,8 @@
                     </div>
                     <!-- End Logo -->
                     <!-- Slogan -->
-                <!--  <p class="site-slogan">
-                        @if (Auth::check())
-                            {{ Auth::user()->name }} - <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Fazer Logoff</a>
-                        @endif
-                    </p> -->
                     <p class="site-slogan" v-if="logged">
-                        {{ name }} - <a href="#" @click="logoff"><i class="fa fa-btn fa-sign-out"></i>Fazer Logoff</a>
+                        {{ name }} - <a href="#" @click="logoff">Fazer Logoff</a>
                     </p>
                     <!-- End Slogan -->
                     <!-- Top Menu -->

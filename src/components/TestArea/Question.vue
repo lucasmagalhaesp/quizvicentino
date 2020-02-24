@@ -53,11 +53,17 @@ export default {
         }
     },
     created(){
+        if (!this.isQuestionArea) this.$store.state.cpActiveTestArea = "";
+        this.$store.state.hits = 0;
+        this.$store.state.time = 0;
         this.numQuestion++;
     },
     computed:{
         activateTimer(){
             return this.$store.state.activateTimer
+        },
+        isQuestionArea(){
+            return this.$store.state.isQuestionArea;
         }
     },
     methods:{
@@ -102,7 +108,6 @@ export default {
                 response = response.data;
                 if (response.success) this.$store.state.cpActiveTestArea = "result"
             });
-            
         }
     },
     watch:{

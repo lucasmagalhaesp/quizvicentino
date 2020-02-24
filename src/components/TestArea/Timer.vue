@@ -11,6 +11,8 @@ export default {
         }
     },
     created(){
+        console.log("created timer");
+        //this.$store.state.timeLeft = 60;
         this.$store.state.activateTimer = true;
     },
     computed:{
@@ -19,10 +21,10 @@ export default {
         },
         timeLeft:{
             get(){
-                return this.$store.state.timeLeft
+                return this.$store.state.timeLeft;
             },
             set(value){
-                this.$store.state.timeLeft = value;
+                this.$store.state.timeLeft = value
             }
         },
     },
@@ -36,13 +38,17 @@ export default {
             this.interval = setInterval(this.contador, 1000);
         },
         contador(){
-            if (this.timeLeft == 0) {
+            console.log(this.timeLeft);
+            if (this.timeLeft == 0){
                 this.$store.commit("stopTimer");
             }else this.timeLeft--;
         },
         pararCronometro(){
             clearInterval(this.interval);
         }
+    },
+    beforeDestroy(){
+        this.pararCronometro();
     }
 }
 </script>
