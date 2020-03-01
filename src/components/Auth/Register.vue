@@ -27,8 +27,8 @@
                 <b-form-invalid-feedback id="input-confirmPassword-feedback">{{ inputError.confirmPassword.msgError }}</b-form-invalid-feedback>
                 
                 <b-row>
-                    <b-col>
-                        <b-button variant="primary" @click="register" class="pull-right" style="margin: 15px">Cadastrar</b-button>
+                    <b-col class="col-xs-12">
+                        <b-button variant="primary" @click="register" class="pull-right col-xs-12 col-md-4" style="margin-top: 15px">Cadastrar</b-button>
                     </b-col>
                 </b-row>
             </b-form>

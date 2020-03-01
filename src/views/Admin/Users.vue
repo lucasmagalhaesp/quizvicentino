@@ -1,7 +1,12 @@
 <template>
-    <b-container>
-        <users></users>    
-    </b-container>
+    <transition
+        enter-active-class="animated bounceInUp"
+        mode="out-in" appear
+    >
+        <b-container>
+            <users></users>    
+        </b-container>
+    </transition>
 </template>
 
 <script>

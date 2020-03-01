@@ -11,19 +11,22 @@
             </b-col>
             <b-col md="8">
                 <div class="panel panel-primary text-center" style="padding: 40px 0">
-                    <!-- <div class="panel-heading">
-                        <h3 class="panel-title">Primary Panel</h3>
-                    </div> -->
                     <div class="panel-body result-datas">
                         <b-badge variant="primary" style="margin-right: 10px">Acertos: {{ hits }}</b-badge>
                         <b-badge variant="primary">Tempo gasto: {{ time }}</b-badge>
                         
                         <h4 v-html="resultText" class="result-text lead"></h4>
-                        <div class="btns-result">
-                            <b-button variant="primary" @click="playAgain">Jogar novamente</b-button>
-                            <b-button variant="info" @click="myTests">Meus testes</b-button>
-                            <b-button class="btn-aqua" @click="ranking">Ranking</b-button>
-                        </div>
+                        <b-row class="btns-result">
+                            <b-col class="col-md-4" style="margin-bottom: 50px">
+                                <b-button variant="primary" class="col-xs-12" @click="playAgain">Jogar novamente</b-button>
+                            </b-col>
+                            <b-col class="col-md-4" style="margin-bottom: 50px">
+                                <b-button variant="info" class="col-xs-12" @click="myTests">Meus testes</b-button>
+                            </b-col>
+                            <b-col class="col-md-4">
+                                <b-button class="btn-aqua col-xs-12" @click="ranking">Ranking</b-button>
+                            </b-col>
+                        </b-row>
                         
                     </div>
                 </div>
@@ -64,6 +67,9 @@ export default {
         img(){
             return `images/result/${this.hits}.png`;
         }
+    },
+    beforeDestroy(){
+        this.$store.state.cpActiveTestArea = "";
     }
 }
 </script>

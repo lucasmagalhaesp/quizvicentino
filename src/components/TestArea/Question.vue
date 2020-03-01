@@ -21,12 +21,12 @@
             <b-alert show variant="success" v-if="response == 'ok'">VOCÊ ACERTOU!!!</b-alert>
             <b-alert show variant="danger" v-if="response == 'error'">VOCÊ ERROU!!!</b-alert>
         </b-col>
-        <b-col md="12" class="text-center">
+        <b-col class="text-center col-xs-12 col-md-offset-5">
             <template v-if="!testEnd">    
-                <b-button variant="success" v-if="activateTimer" @click="getCorrectResponse">Confirmar</b-button>
-                <b-button variant="info" v-if="!activateTimer" @click="numQuestion++">Próxima</b-button>
+                <b-button variant="success" class="col-xs-12 col-md-2" v-if="activateTimer" @click="getCorrectResponse">Confirmar</b-button>
+                <b-button variant="info" class="col-xs-12 col-md-2" v-if="!activateTimer" @click="numQuestion++">Próxima</b-button>
             </template>
-            <b-button variant="primary" v-else @click="saveTest">Resultado</b-button>
+            <b-button variant="primary" class="col-xs-12 col-md-2" v-else @click="saveTest">Resultado</b-button>
         </b-col>
         
         <!-- <b-button variant="danger">Sair</b-button> -->

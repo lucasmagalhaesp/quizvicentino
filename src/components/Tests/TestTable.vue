@@ -58,6 +58,7 @@ export default {
                         return this.formatDateTimeBR(value);
                     } 
                 },
+                { key: "user.name", label: "Nome", sortable: true, class: "text-center" },
                 { key: "points", label: "Acertos", sortable: true, class: "text-center" },
                 { key: "time", label: "Tempo", sortable: true, class: "text-center",
                     formatter: (value, key, item) => {

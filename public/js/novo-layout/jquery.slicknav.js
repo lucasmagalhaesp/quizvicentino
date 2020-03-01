@@ -73,7 +73,8 @@
 		var menuBar = jQuery('<div class="'+prefix+'_menu hidden-lg"></div>');
 		jQuerythis.btn = jQuery('<'+settings.parentTag+' aria-haspopup="true" tabindex="0" class="'+prefix+'_btn '+prefix+'_collapsed"><span class="'+prefix+'_menutxt">'+settings.label+'</span><span class="'+iconClass+'"><span class="'+prefix+'_icon-bar"></span><span class="'+prefix+'_icon-bar"></span><span class="'+prefix+'_icon-bar"></span></span></a>');
 		jQuery(menuBar).append(jQuerythis.btn);		
-		jQuery(settings.prependTo).prepend(menuBar);
+		//jQuery(settings.prependTo).prepend(menuBar);
+		jQuery(".menu-responsivo").append(menuBar);
 		menuBar.append(jQuerythis.mobileNav);
 		
 		// iterate over structure adding additional structure
@@ -233,9 +234,9 @@
 			duration = settings.duration;
 		
 		if (el.hasClass(prefix+'_hidden')) {
+			
 			el.removeClass(prefix+'_hidden');
 			el.slideDown(duration, settings.easingOpen, function(){
-				
 				jQuery(trigger).removeClass(prefix+'_animating');
 				jQuery(trigger).parent().removeClass(prefix+'_animating');
 				

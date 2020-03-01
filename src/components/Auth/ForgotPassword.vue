@@ -16,8 +16,8 @@
                 <b-form-input v-model="email" type="email" required placeholder="E-mail" :state="valid" aria-describedby="input-live-help input-email-feedback"></b-form-input>
                 <b-form-invalid-feedback id="input-email-feedback">{{ msgError }}</b-form-invalid-feedback>
                 <b-row>
-                    <b-col>
-                        <b-button variant="primary" @click="forgotPassword" class="pull-right" style="margin: 15px">Recuperar Senha</b-button>
+                    <b-col class="col-xs-12">
+                        <b-button variant="primary" @click="forgotPassword" class="pull-right col-xs-12 col-md-4" style="margin-top: 15px">Recuperar Senha</b-button>
                     </b-col>
                 </b-row>
             </b-form>

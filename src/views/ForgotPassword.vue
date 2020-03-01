@@ -1,7 +1,12 @@
 <template>
-    <b-container>
-        <forgot-password></forgot-password>
-    </b-container>
+    <transition
+      enter-active-class="animated fadeInLeft"
+      mode="out-in" appear
+    >
+        <b-container>
+            <forgot-password></forgot-password>
+        </b-container>
+    </transition>
 </template>
 
 <script>

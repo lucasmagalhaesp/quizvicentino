@@ -1,7 +1,12 @@
 <template>
-    <b-container>
-        <contact-form></contact-form>
-    </b-container>
+    <transition
+        enter-active-class="animated fadeInLeft"
+        mode="out-in" appear
+    >
+        <b-container>
+            <contact-form></contact-form>
+        </b-container>
+    </transition>
 </template>
 
 <script>

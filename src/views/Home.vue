@@ -124,7 +124,6 @@
             <div class="clearfix"></div>
             <!-- End Main Article -->
         </div>
-    </div>
 
 
 

@@ -1,8 +1,13 @@
 <template>
-    <b-container>
-        <table-questions></table-questions>
-        <form-questions></form-questions>
-    </b-container>
+    <transition
+        enter-active-class="animated bounceInUp"
+        mode="out-in" appear
+    >
+        <b-container>
+            <table-questions></table-questions>
+            <form-questions></form-questions>
+        </b-container>
+    </transition>
 </template>
 
 <script>
