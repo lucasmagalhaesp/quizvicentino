@@ -38,6 +38,19 @@
                 </div>
                 <div class="primary-container">
                     <div id="container_hornav" class="container no-padding">
+
+
+                            
+                     <!--    <div class="hidden-lg hidden-md">
+                            <div class="logo">
+                                <a href="#">
+                                    <img src="/images/logo.png" alt="Logo" style="height:50px" />
+                                </a>
+                            </div>
+                            <div class="menu-responsivo"></div>
+                        </div> -->
+
+
                         <!-- Logo --> 
                         <!-- End Logo -->
                         <!-- Slogan -->
@@ -57,10 +70,10 @@
                                 <div id="hornav" class="pull-right">
                                     <ul id="hornavmenu" class="nav navbar-nav">
                                         <li><router-link to="/" tag="a">Home</router-link></li>
-                                        <li><router-link to="/about">Sobre</router-link></li>
-                                        <li><router-link to="/test-area">Jogar</router-link></li>
-                                        <li v-if="logged"><router-link to="/tests">Testes</router-link></li>
-                                        <li v-if="logged"><router-link to="/ranking">Ranking</router-link></li>
+                                        <li><router-link to="/about" tag="a">Sobre</router-link></li>
+                                        <li><router-link to="/test-area" tag="a">Jogar</router-link></li>
+                                        <li v-if="logged"><router-link to="/tests" tag="a">Testes</router-link></li>
+                                        <li v-if="logged"><router-link to="/ranking" tag="a">Ranking</router-link></li>
                                         <li class="dropdown" v-if="isAdmin">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                                     Área restrita
@@ -71,7 +84,7 @@
                                                     <li><router-link to="/admin/questions">Perguntas</router-link></li>
                                                 </ul>
                                             </li>
-                                        <li><router-link to="/contact">Contato</router-link></li>
+                                        <li><router-link to="/contact" tag="a">Contato</router-link></li>
                                     </ul>
                                 </div>
                             </div>

@@ -46,7 +46,8 @@
 		var settings = this.settings;
 		
 		// clone menu if needed
-		if (settings.duplicate) {
+		//if (settings.duplicate) {
+		if (screen.width > 767){
 			jQuerythis.mobileNav = menu.clone();
 			//remove ids from clone to prevent css issues
 			jQuerythis.mobileNav.removeAttr('id');
@@ -56,6 +57,7 @@
 		}
 		else
 			jQuerythis.mobileNav = menu;
+		
 		
 		// styling class for the button
 		var iconClass = prefix+'_icon';
@@ -178,6 +180,12 @@
 					e.stopImmediatePropagation();
 			});
 		}
+
+		jQuery(document).click(function(e){
+			var classElement = e.target.classList.value;
+			if (classElement.search("slicknav") == -1)
+				jQuerythis.close();
+		});
     };
 	
 	//toggle menu
