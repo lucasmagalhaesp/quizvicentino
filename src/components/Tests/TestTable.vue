@@ -1,40 +1,38 @@
 <template>
-    <b-row class="margin-vert-30">
-        <b-col md="12">
-            <div class="headline">
-                <h2>Testes</h2>
-            </div>
-        </b-col>
-        
-        <b-col md="12">
-            <b-table
-                :fields="fields"
-                :items="tests"
-                :current-page="pagination.currentPage"
-                :per-page="pagination.perPage"
-                striped bordered small responsive :busy="busy"
-            >
-                <template v-slot:table-busy>
-                    <div class="text-center text-info my-2">
-                        <b-spinner class="align-middle"></b-spinner>
-                        <strong>Carregando...</strong>
-                    </div>
-                </template>
-            </b-table>
-        </b-col>
+    <div>
+        <b-jumbotron class="page-title headline" header="Testes"></b-jumbotron>
+        <b-row class="margin-vert-30">
+            <b-col md="12">
+                <b-table
+                    :fields="fields"
+                    :items="tests"
+                    :current-page="pagination.currentPage"
+                    :per-page="pagination.perPage"
+                    striped bordered small responsive :busy="busy"
+                    head-variant="dark"
+                >
+                    <template v-slot:table-busy>
+                        <div class="text-center text-info my-2">
+                            <b-spinner class="align-middle"></b-spinner>
+                            <strong>Carregando...</strong>
+                        </div>
+                    </template>
+                </b-table>
+            </b-col>
 
-        <!-- Paginação -->
-        <b-col md="4">
-            <b-pagination
-                v-model="pagination.currentPage"
-                :total-rows="pagination.totalRecords"
-                :per-page="pagination.perPage"
-                align="fill"
-                class="my-0"
-                md="6"
-            ></b-pagination>
-        </b-col>
-    </b-row>
+            <!-- Paginação -->
+            <b-col md="4">
+                <b-pagination
+                    v-model="pagination.currentPage"
+                    :total-rows="pagination.totalRecords"
+                    :per-page="pagination.perPage"
+                    align="fill"
+                    class="my-0"
+                    md="6"
+                ></b-pagination>
+            </b-col>
+        </b-row>
+    </div>
 </template>
 
 <script>
@@ -58,7 +56,7 @@ export default {
                         return this.formatDateTimeBR(value);
                     } 
                 },
-                { key: "user.name", label: "Nome", sortable: true, class: "text-center" },
+                { key: "user.name", label: "Nome", sortable: true, class: this.type == "all" ? "text-center" : "text-center hidden" },
                 { key: "points", label: "Acertos", sortable: true, class: "text-center" },
                 { key: "time", label: "Tempo", sortable: true, class: "text-center",
                     formatter: (value, key, item) => {

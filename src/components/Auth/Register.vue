@@ -11,10 +11,12 @@
                 <b-form-input v-model="form.name" type="text" required placeholder="Nome" :state="inputError.name.valid" aria-describedby="input-live-help input-name-feedback"></b-form-input>
                 <b-form-invalid-feedback id="input-name-feedback">{{ inputError.name.msgError }}</b-form-invalid-feedback>
                 
-                <b-form-input v-model="form.state" type="text" required placeholder="Estado" :state="inputError.state.valid" aria-describedby="input-live-help input-state-feedback" maxlength="2"></b-form-input>
+                <!-- <b-form-input v-model="form.state" type="text" required placeholder="Estado" :state="inputError.state.valid" aria-describedby="input-live-help input-state-feedback" maxlength="2"></b-form-input> -->
+                <b-form-select v-model="form.state" :options="states" class="form-control" :state="inputError.state.valid" aria-describedby="input-live-help input-state-feedback"></b-form-select>
                 <b-form-invalid-feedback id="input-state-feedback">{{ inputError.state.msgError }}</b-form-invalid-feedback>
                 
-                <b-form-input v-model="form.city" type="text" required placeholder="Cidade" :state="inputError.city.valid" aria-describedby="input-live-help input-city-feedback"></b-form-input>
+                <!-- <b-form-input v-model="form.city" type="text" required placeholder="Cidade" :state="inputError.city.valid" aria-describedby="input-live-help input-city-feedback"></b-form-input> -->
+                <b-form-select v-model="form.city" :options="cities" class="form-control" :state="inputError.city.valid" aria-describedby="input-live-help input-city-feedback"></b-form-select>
                 <b-form-invalid-feedback id="input-city-feedback">{{ inputError.city.msgError }}</b-form-invalid-feedback>
 
                 <b-form-input v-model="form.email" type="email" required placeholder="E-mail" :state="inputError.email.valid" aria-describedby="input-live-help input-email-feedback"></b-form-input>
@@ -37,13 +39,14 @@
 </template>
 
 <script>
+import brazil from "@/assets/json-states/brazil.json";
 export default {
     data(){
         return {
             form:{
                 name: "",
                 city: "",
-                state: "",
+                state: null,
                 email: "",
                 password: "",
                 confirmPassword: ""
@@ -73,8 +76,40 @@ export default {
                     valid: null,
                     msgError: ""
                 }
-            }
-            
+            },
+            brazil,
+            states: [
+                { value: null, text: "Selecione seu estado" },
+                { value: "AC", text: "Acre" },
+                { value: "AL", text: "Alagoas" },
+                { value: "AP", text: "Amapá" },
+                { value: "AM", text: "Amazonas" },
+                { value: "BA", text: "Bahia" },
+                { value: "CE", text: "Ceará" },
+                { value: "DF", text: "Distrito Federal" },
+                { value: "ES", text: "Espírito Santo" },
+                { value: "GO", text: "Goiás" },
+                { value: "MA", text: "Maranhão" },
+                { value: "MT", text: "Mato Grosso" },
+                { value: "MS", text: "Mato Grosso do Sul" },
+                { value: "MG", text: "Minas Gerais" },
+                { value: "PA", text: "Pará" },
+                { value: "PB", text: "Paraíba" },
+                { value: "PR", text: "Paraná" },
+                { value: "PE", text: "Pernambuco" },
+                { value: "PI", text: "Piauí" },
+                { value: "RJ", text: "Rio de Janeiro" },
+                { value: "RN", text: "Rio Grande do Norte" },
+                { value: "RS", text: "Rio Grande do Sul" },
+                { value: "RO", text: "Rondônia" },
+                { value: "RR", text: "Roraima" },
+                { value: "SC", text: "Santa Catarina" },
+                { value: "SP", text: "São Paulo" },
+                { value: "SE", text: "Sergipe" },
+                { value: "TO", text: "Tocantins" }
+            ],
+            cities: [],
+            defaultCity: "Selecione sua cidade"
         }
     },
     methods:{
@@ -103,11 +138,18 @@ export default {
                 this.inputError[campo].msgError = "";
             }
         }
-    }
+    },
+    watch: {
+        "form.state"(){
+            this.cities = brazil[this.form.state].cities;
+            this.cities.unshift(this.defaultCity);
+            this.form.city = this.defaultCity;
+        }
+    },
 }
 </script>
 <style scoped>
-    input{
+    input, select{
         margin-top: 15px;
     }
 </style>

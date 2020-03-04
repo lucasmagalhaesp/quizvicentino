@@ -5,7 +5,7 @@
                 <div class="login-header margin-bottom-30">
                     <h2>Recuperar Senha</h2>
                 </div>
-                <b-alert show variant="primary" v-if="informEmailAlert">
+                <b-alert show variant="info" v-if="informEmailAlert">
                     Seu cadastro foi encontrado com sucesso. 
                     A partir agora, você precisará informar o seu e-mail para recuperar a senha e fazer login.
                 </b-alert>

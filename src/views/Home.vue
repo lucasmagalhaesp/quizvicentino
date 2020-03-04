@@ -23,14 +23,17 @@
                 <!-- End Carousel Indicators -->
                 <!-- Carousel Images -->
                 <div class="carousel-inner">
-                    <div class="item active">
+                    <div class="item active" style="position: relative">
                         <img src="images/index/slide1.jpg">
+                        <p class="text-slider">Como está seu conhecimento sobre a SSVP e outros assuntos relacionados?</p>
                     </div>
                     <div class="item">
                         <img src="images/index/slide2.jpg">
+                        <p class="text-slider">Junte seus amigos vicentinos e veja quem ficará no top do ranking</p>
                     </div>
                     <div class="item">
                         <img src="images/index/slide3.jpg">
+                        <p class="text-slider">Acesse o quiz de onde estiver, através de notebooks, celulares e tablets</p>
                     </div>
                 </div>
                 <!-- End Carousel Images -->
@@ -125,10 +128,6 @@
             <!-- End Main Article -->
         </div>
 
-
-
-
-
 </template>
 
 <script>
@@ -144,3 +143,19 @@ export default {
 
 }
 </script>
+<style>
+    .text-slider{
+        position: absolute;
+        bottom: 60px;
+        left: 20%;
+        width: 60%;
+        background: #473d4f;
+        color: #FFF;
+        border-radius: 3px;
+        padding: 5px;
+        font-size: 18px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 25px
+    }
+</style>
