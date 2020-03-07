@@ -11,8 +11,6 @@ export default {
         }
     },
     created(){
-        console.log("created timer");
-        //this.$store.state.timeLeft = 60;
         this.$store.state.activateTimer = true;
     },
     computed:{
@@ -38,7 +36,6 @@ export default {
             this.interval = setInterval(this.contador, 1000);
         },
         contador(){
-            console.log(this.timeLeft);
             if (this.timeLeft == 0){
                 this.$store.commit("stopTimer");
             }else this.timeLeft--;

@@ -1,36 +1,40 @@
 <template>
-    <b-row class="margin-vert-30">
-        <b-col md="12">
-            <div class="headline">
-                <h2>Pergunta {{ numQuestion }}</h2>
-            </div>
-        </b-col>
-        <b-col md="8">
-            <timer></timer>
-        </b-col>
-        <b-col md="4" class="text-right">
-            <test-data></test-data>
-        </b-col>
-        <b-col md="12">
-            <h6>{{ currentQuestion.question.description }}</h6>
-            <b-form-group>
-                <b-form-radio v-for="(answer, index) in currentQuestion.answers" :key="index" v-model="userResponse" name="answer" :value="answer.id" :disabled="disableAnswers" class="question-options">{{ answer.description }}</b-form-radio>
-            </b-form-group>
-        </b-col>
-        <b-col md="4" class="text-center col-md-offset-4">
-            <b-alert show variant="success" v-if="response == 'ok'">VOCÊ ACERTOU!!!</b-alert>
-            <b-alert show variant="danger" v-if="response == 'error'">VOCÊ ERROU!!!</b-alert>
-        </b-col>
-        <b-col class="text-center col-xs-12 col-md-offset-5">
-            <template v-if="!testEnd">    
-                <b-button variant="success" class="col-xs-12 col-md-2" v-if="activateTimer" @click="getCorrectResponse">Confirmar</b-button>
-                <b-button variant="info" class="col-xs-12 col-md-2" v-if="!activateTimer" @click="numQuestion++">Próxima</b-button>
-            </template>
-            <b-button variant="primary" class="col-xs-12 col-md-2" v-else @click="saveTest">Resultado</b-button>
-        </b-col>
-        
-        <!-- <b-button variant="danger">Sair</b-button> -->
-    </b-row>
+    <div>
+        <b-jumbotron class="page-title headline" :header="titleQuestion"></b-jumbotron>
+        <b-row class="margin-vert-30">
+            <b-row style="margin: 0">
+                <b-col md="8">
+                    <timer></timer>
+                </b-col>
+                <b-col md="3" class="text-right col-xs-10">
+                    <test-data></test-data>
+                </b-col>
+                <b-col md="1" class="col-xs-2">
+                    <b-button size="sm" variant="warning" @click="$store.state.cpActiveTestArea = false">Sair</b-button>
+                </b-col>
+            </b-row>
+           
+            <b-col md="12">
+                <h6 style="line-height: 20px">{{ currentQuestion.question.description }}</h6>
+                <b-form-group>
+                    <b-form-radio v-for="(answer, index) in currentQuestion.answers" :key="index" v-model="userResponse" name="answer" :value="answer.id" :disabled="disableAnswers" class="question-options">{{ answer.description }}</b-form-radio>
+                </b-form-group>
+            </b-col>
+            <b-col md="4" class="text-center col-md-offset-4">
+                <b-alert show variant="success" v-if="response == 'ok'">VOCÊ ACERTOU!!!</b-alert>
+                <b-alert show variant="danger" v-if="response == 'error'">VOCÊ ERROU!!!</b-alert>
+            </b-col>
+            <b-col class="text-center col-xs-12">
+                <template v-if="!testEnd">    
+                    <b-button variant="success" class="col-md-offset-5 col-xs-12 col-md-2" v-if="activateTimer" @click="getCorrectResponse">Confirmar</b-button>
+                    <b-button variant="info" class="col-md-offset-5 col-xs-12 col-md-2" v-if="!activateTimer" @click="numQuestion++">Próxima</b-button>
+                </template>
+                <b-button variant="primary" class="col-md-offset-5 col-xs-12 col-md-2" v-else @click="saveTest">Resultado</b-button>
+            </b-col>
+            
+            <!-- <b-button variant="danger">Sair</b-button> -->
+        </b-row>
+    </div>
 
 </template>
 
@@ -62,8 +66,17 @@ export default {
         activateTimer(){
             return this.$store.state.activateTimer
         },
-        isQuestionArea(){
-            return this.$store.state.isQuestionArea;
+        isQuestionArea:{
+            get(){
+                return this.$store.state.isQuestionArea;
+            },
+            set(value){
+                this.$store.state.isQuestionArea = value;
+            }
+            
+        },
+        titleQuestion(){
+            return `Pergunta ${this.numQuestion}`;
         }
     },
     methods:{
@@ -122,5 +135,9 @@ export default {
 <style>
     .question-options input{
         margin-right: 5px
+    }
+
+    .question-options label{
+        display: initial !important;
     }
 </style>

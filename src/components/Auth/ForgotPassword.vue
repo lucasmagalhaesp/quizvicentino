@@ -3,7 +3,7 @@
         <b-col class="col-md-6 col-md-offset-3 col-sm-offset-3">
             <b-form class="login-page">
                 <div class="login-header margin-bottom-30">
-                    <h2>Recuperar Senha</h2>
+                    <h2 class="lbl-forgot-password">Recuperar Senha</h2>
                 </div>
                 <b-alert show variant="info" v-if="informEmailAlert">
                     Seu cadastro foi encontrado com sucesso. 

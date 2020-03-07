@@ -2,34 +2,13 @@
     <div>
         <div class="hidden-lg hidden-md">
             <div class="logo">
-                <a href="#">
-                    <img src="/images/logo.png" alt="Logo" style="height:50px" />
-                </a>
+                <router-link to="/" tag="a">
+                    <img src="/images/logo.png" alt="Logo" style="height:80px" />
+                </router-link>
             </div>
             <div class="menu-responsivo"></div>
         </div>
         <div id="body_bg">
-            <!-- <div id="container_header" class="container">
-                <div id="header" class="row">
-                    <div class="col-md-12 margin-top-15">
-                        Header Social Icons
-                        <ul class="social-icons circle pull-right">
-                            <li class="social-facebook">
-                                <a href="#" target="_blank" title="Facebook"></a>
-                            </li>
-                            <li class="social-rss">
-                                <a href="#" target="_blank" title="Whatsapp"></a>
-                            </li>
-                            <li class="social-twitter">
-                                <a href="#" target="_blank" title="E-mail"></a>
-                            </li>
-                        </ul>
-                        End Header Social Icons
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div> -->
-            
             <div class="primary-container-group padding-top-menu">
                 <!-- Background -->
                 <div class="primary-container-background" style="height: 80%">
@@ -38,20 +17,6 @@
                 </div>
                 <div class="primary-container">
                     <div id="container_hornav" class="container no-padding">
-
-
-                            
-                     <!--    <div class="hidden-lg hidden-md">
-                            <div class="logo">
-                                <a href="#">
-                                    <img src="/images/logo.png" alt="Logo" style="height:50px" />
-                                </a>
-                            </div>
-                            <div class="menu-responsivo"></div>
-                        </div> -->
-
-
-                        <!-- Logo --> 
                         <!-- End Logo -->
                         <!-- Slogan -->
                         <p class="site-slogan" v-if="logged">
@@ -62,9 +27,9 @@
                         <div class="row  hidden-xs">
                             
                         <div class="logo">
-                            <a href="#">
-                                <img src="/images/logo.png" alt="Logo" style="height:50px" />
-                            </a>
+                            <router-link to="/" tag="a">
+                                <img src="/images/logo.png" alt="Logo" style="height:80px" />
+                            </router-link>
                         </div>
                             <div class="hornav-block">
                                 <div id="hornav" class="pull-right">
@@ -194,6 +159,7 @@
                 if (response.success) {
                     sessionStorage.removeItem("quiz_vtoken");
                     sessionStorage.removeItem("quiz_vname");
+                    sessionStorage.removeItem("quiz_vemail");
                     this.$store.state.isAdmin = false;
                     this.$store.state.logged = false;
                     this.$router.push({ name: "home" });

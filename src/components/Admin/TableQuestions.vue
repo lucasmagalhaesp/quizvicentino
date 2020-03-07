@@ -1,70 +1,67 @@
 <template>
-    <b-row class="margin-vert-30">
-        <b-col md="12">
-            <div class="headline">
-                <h2>Perguntas</h2>
-            </div>
-        </b-col>
-        
-        <b-col md="12" v-if="!formQuestionActive">
-            <div>
-                <b-table
-                    :fields="fields"
-                    :items="questions"
-                    :current-page="pagination.currentPage"
-                    :per-page="pagination.perPage"
-                    striped bordered small responsive :busy="busy"
-                >
-                    <template v-slot:table-busy>
-                        <div class="text-center text-info my-2">
-                            <b-spinner class="align-middle"></b-spinner>
-                            <strong>Carregando...</strong>
-                        </div>
-                    </template>
-
-                    <template v-slot:cell(edtExc)="row">
-                        <b-button-group size="sm" style="width: 80px">
-                            <b-button variant="primary" title="Editar" @click="edit(row.item.id)"><i class="fas fa-edit"></i></b-button>
-                            <b-button variant="danger" title="Excluir" @click="remove(row.item.id)"><i class="fas fa-trash-alt"></i></b-button>
-                        </b-button-group>
-                    </template>
-                </b-table>
-
-                <!-- Paginação -->
-                <b-row class="mt-3">
-                    <b-col md="5">
-                        <b-pagination
-                            v-model="pagination.currentPage"
-                            :total-rows="pagination.totalRecords"
-                            :per-page="pagination.perPage"
-                            align="fill"
-                            class="my-0"
-                            md="6"
-                        ></b-pagination>
-                    </b-col>
-                    <b-col md="2" class="col-md-offset-5 text-right">
-                        <b-button variant="info" @click="newQuestion" class="addQuestion"><i class="fas fa-plus"></i> Pergunta</b-button>
-                    </b-col>
-                </b-row>
-                <!-- Modal para confirmação de exclusão -->
-                <b-modal id="md-delete" title="Excluir empresa" button-size="sm"
-                    :header-bg-variant="'danger'" 
-                    :header-text-variant="'light'"
-                    :footer-bg-variant="'danger'"
+    <div>
+        <b-jumbotron class="page-title headline" header="Perguntas"></b-jumbotron>
+        <b-row class="margin-vert-30">
+            <b-col md="12" v-if="!formQuestionActive">
+                <div>
+                    <b-table
+                        :fields="fields"
+                        :items="questions"
+                        :current-page="pagination.currentPage"
+                        :per-page="pagination.perPage"
+                        striped bordered small responsive :busy="busy"
                     >
-                    <p>Deseja realmente excluir esse registro?</p>
-                    <template v-slot:modal-footer="{ ok, cancel }">
-                        <b-button variant="success" @click="remove(questionRemoveID, true)">
-                            OK
-                        </b-button>
-                        <b-button variant="light" @click="cancel()">
-                            Cancelar
-                        </b-button>
-                    </template>
-                </b-modal>
-            </div>
-        </b-col>
-    </b-row>
+                        <template v-slot:table-busy>
+                            <div class="text-center text-info my-2">
+                                <b-spinner class="align-middle"></b-spinner>
+                                <strong>Carregando...</strong>
+                            </div>
+                        </template>
+
+                        <template v-slot:cell(edtExc)="row">
+                            <b-button-group size="sm" style="width: 80px">
+                                <b-button variant="primary" title="Editar" @click="edit(row.item.id)"><i class="fas fa-edit"></i></b-button>
+                                <b-button variant="danger" title="Excluir" @click="remove(row.item.id)"><i class="fas fa-trash-alt"></i></b-button>
+                            </b-button-group>
+                        </template>
+                    </b-table>
+
+                    <!-- Paginação -->
+                    <b-row class="mt-3">
+                        <b-col md="5">
+                            <b-pagination
+                                v-model="pagination.currentPage"
+                                :total-rows="pagination.totalRecords"
+                                :per-page="pagination.perPage"
+                                align="fill"
+                                class="my-0"
+                                md="6"
+                            ></b-pagination>
+                        </b-col>
+                        <b-col md="2" class="col-md-offset-5 text-right">
+                            <b-button variant="info" @click="newQuestion" class="addQuestion"><i class="fas fa-plus"></i> Pergunta</b-button>
+                        </b-col>
+                    </b-row>
+                    <!-- Modal para confirmação de exclusão -->
+                    <b-modal id="md-delete" title="Excluir empresa" button-size="sm"
+                        :header-bg-variant="'danger'" 
+                        :header-text-variant="'light'"
+                        :footer-bg-variant="'danger'"
+                        >
+                        <p>Deseja realmente excluir esse registro?</p>
+                        <template v-slot:modal-footer="{ ok, cancel }">
+                            <b-button variant="success" @click="remove(questionRemoveID, true)">
+                                OK
+                            </b-button>
+                            <b-button variant="light" @click="cancel()">
+                                Cancelar
+                            </b-button>
+                        </template>
+                    </b-modal>
+                </div>
+            </b-col>
+        </b-row>
+    </div>
 </template>
 
 <script>
