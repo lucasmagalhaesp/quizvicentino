@@ -9,6 +9,4 @@ O QUIZ VICENTINO é um método criado para testar os conhecimentos dos vicentino
 
 Esse projeto é uma SPA desenvolvida em vuejs (utilizando o vue cli), que consome uma api PHP, que utiliza o framework Laravel
 
-
-## Customize configuration
 [Link do site oficial](https://www.quizvicentino.com.br)
