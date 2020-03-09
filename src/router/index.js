@@ -54,7 +54,7 @@ const routes = [
     component: Ranking
   },
   {
-    path: '/reset-password/:token',
+    path: '/reset-password',
     name: 'resetPassword',
     component: ResetPassword
   },

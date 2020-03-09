@@ -118,7 +118,7 @@ export default {
             axios.post("users", { dados: this.form })
             .then(response => {
                 response = response.data;
-                if (response.success) alert("Usuário cadastrado com sucesso");
+                if (response.success) this.$router.push({ name: "login" });
                 else console.error(response.msg);
             }).catch(error => {
                 let errors = error.response.data.errors ? error.response.data.errors : null;

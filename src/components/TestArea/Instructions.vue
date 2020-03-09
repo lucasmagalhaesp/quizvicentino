@@ -27,7 +27,6 @@
 <script>
 export default {
     created(){
-        console.log("instruções");
         this.$store.state.hits = 0;
         this.$store.state.time = 0;
         this.$store.state.activateTimer = false;

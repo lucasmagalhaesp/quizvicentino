@@ -51,7 +51,7 @@ export default {
         }
     },
     created(){
-        this.token = this.$route.params.token;
+        //this.token = this.$route.params.token;
     },
     methods:{
         resetPassword(){
@@ -62,8 +62,8 @@ export default {
             }else{
                 axios.post("auth/resetPassword", 
                 {
-                    password: this.password,
-                    token: this.token
+                    email: this.emailResetPassword,
+                    password: this.password
                 })
                 .then(response => {
                     response = response.data;
@@ -77,6 +77,11 @@ export default {
             this.errorChangedPassword = false;
             this.inputError.confirmPassword.msgError = "";
             this.inputError.confirmPassword.valid = null;
+        }
+    },
+    computed:{
+        emailResetPassword(){
+            return this.$store.state.emailResetPassword;
         }
     }
 }

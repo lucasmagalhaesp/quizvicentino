@@ -14,7 +14,8 @@ export default new Vuex.Store({
     questionEditID: 0,
     formQuestionActive: false,
     logged: false,
-    isAdmin: false
+    isAdmin: false,
+    emailResetPassword: ""
   },
   getters:{
 

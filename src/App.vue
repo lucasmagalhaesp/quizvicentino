@@ -7,6 +7,9 @@
                 </router-link>
             </div>
             <div class="menu-responsivo"></div>
+            <p class="site-slogan" v-if="logged" style="position: inherit; background: #008148">
+                {{ name }} - <a href="#" @click="logoff">Fazer Logoff</a>
+            </p>
         </div>
         <div id="body_bg">
             <div class="primary-container-group padding-top-menu">
@@ -19,7 +22,7 @@
                     <div id="container_hornav" class="container no-padding">
                         <!-- End Logo -->
                         <!-- Slogan -->
-                        <p class="site-slogan" v-if="logged">
+                        <p class="site-slogan hidden-xs" v-if="logged">
                             {{ name }} - <a href="#" @click="logoff">Fazer Logoff</a>
                         </p>
                         <!-- End Slogan -->
@@ -145,7 +148,7 @@
             return this.$store.state.logged
         },
         name(){
-            return sessionStorage.getItem("quiz_vname")
+            return sessionStorage.getItem("quiz_vname").split(" ")[0]
         }
     },
     methods:{
