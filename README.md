@@ -1,19 +1,14 @@
-# quizvicentino
+# Quiz Vicentino
 
-## Project setup
+## O que é o Quiz Vicentino?
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+O QUIZ VICENTINO é um método criado para testar os conhecimentos dos vicentinos sobre a Sociedade de São Vicente de Paulo (SSVP) e outros assuntos relacionados. Ele também tem o objetivo de incentivar os vicentinos a sempre estarem atualizados para melhor desenvolverem o seu trabalho de assistência às famílias mais necessitadas.
 ```
 
-### Compiles and minifies for production
+## Tecnologias Utilizadas no Site
 ```
-npm run build
+Esse projeto é uma SPA desenvolvida em vuejs (utilizando o vue cli), que consome uma api PHP, que utiliza o framework Laravel
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Customize configuration
+[Link do site oficial](https://www.quizvicentino.com.br)
