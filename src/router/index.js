@@ -116,7 +116,10 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(){
+    return { x: 0, y: 0 }
+  }
 })
 
 let publicRoutes = ["/", "/contact", "/about", "/login", "/register", "/reset-password", "/forgot-password"];

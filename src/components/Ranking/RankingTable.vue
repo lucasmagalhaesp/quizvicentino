@@ -2,6 +2,9 @@
     <div>
         <b-jumbotron class="page-title headline" header="Ranking"></b-jumbotron>
         <b-row class="margin-vert-30">
+            <div class="col-md-12 hidden-lg hidden-sm hidden-md">
+                <p style="font-style: italic; font-size: 0.8em; line-height: 15px">*Deslize o dedo para esquerda na tabela, para visualizar todas a informações</p>
+            </div>
             <b-col md="12">
                 <b-table
                     :fields="fields"
@@ -89,8 +92,6 @@ export default {
     },
     methods:{
         userResult(item, type) {
-            console.log(item.email, this.userEmail);
-            //if (!item || type !== 'row') return
             if (item.email == this.userEmail) return 'bg-row-user'
         }
     }

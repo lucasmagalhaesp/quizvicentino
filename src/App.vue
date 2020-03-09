@@ -145,7 +145,8 @@
             return this.$store.state.isAdmin
         },
         logged(){
-            return this.$store.state.logged
+            console.log("logado: "+this.$store.state.logged+" "+sessionStorage.getItem("quiz_vlogged"));
+            return this.$store.state.logged || sessionStorage.getItem("quiz_vlogged") != null
         },
         name(){
             return sessionStorage.getItem("quiz_vname").split(" ")[0]
@@ -163,6 +164,7 @@
                     sessionStorage.removeItem("quiz_vtoken");
                     sessionStorage.removeItem("quiz_vname");
                     sessionStorage.removeItem("quiz_vemail");
+                    sessionStorage.removeItem("quiz_vlogged");
                     this.$store.state.isAdmin = false;
                     this.$store.state.logged = false;
                     this.$router.push({ name: "home" });

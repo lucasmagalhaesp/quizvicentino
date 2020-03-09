@@ -55,8 +55,10 @@ export default {
                     sessionStorage.setItem("quiz_vtoken", response.access_token);
                     sessionStorage.setItem("quiz_vname", response.name);
                     sessionStorage.setItem("quiz_vemail", response.email);
+                    sessionStorage.setItem("quiz_vlogged", true);
                     this.$store.state.isAdmin = response.isAdmin == "S" ? true : false;
                     this.$store.state.logged = true;
+
                     this.$router.push({ name: "test-area" });
                 }else console.error(response.msg);
             }).catch(error => {
