@@ -26,5 +26,26 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
 
+  let publicRoutes = ["/", "/contact", "/about", "/login", "/register", "/reset-password", "/forgot-password"];
+  let privateRoutes = ["/test-area", "/tests", "/ranking", "/admin"];
+
+  Router.beforeEach((to, from, next) => {
+    if (!privateRoutes.includes(to.path)){
+      next()
+    }else{
+      axios.get("auth/me", {
+        headers: {
+            Authorization: 'Bearer '+sessionStorage.getItem("quiz_vtoken")
+        }
+      }).then(response => {
+          if (response.data.id) next()
+          else next("/login");
+      }).catch(error => {
+          next("/login");
+          console.error(error);
+      });
+    }
+  });
+
   return Router
 })
