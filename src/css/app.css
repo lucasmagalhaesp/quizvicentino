@@ -1,1 +1,33 @@
 /* app global css */
+.q-layout__section--marginal{
+    /* background: #00796b */
+    background: #00916E ;
+}
+
+.q-item__section--avatar{
+    min-width: 46px;
+}
+
+.page-title{
+    color: #008148;
+    width: 100%;
+    /* background: #EAE6E5; */
+    padding: 3px 0;
+    /* border-radius: 5px; */
+    border-bottom: solid 2px green
+}
+
+.my-card{
+    background: #4D7C8A;
+    border: #4D7C8A 2px solid;
+}
+
+.q-card__section, .q-banner{
+    /* background: #e0e0e0; 
+    color: #78909c; */
+    /*font-size: 30px*/
+}
+
+section{
+    padding: 30px 50px
+}

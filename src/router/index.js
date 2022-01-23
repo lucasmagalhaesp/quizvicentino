@@ -26,8 +26,8 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
 
-  let publicRoutes = ["/", "/contact", "/about", "/login", "/register", "/reset-password", "/forgot-password"];
-  let privateRoutes = ["/test-area", "/tests", "/ranking", "/admin"];
+  let publicRoutes = ["/", "/contact", "/about", "/login", "/register", "/reset-password", "/forgot-password", "/test-area"];
+  let privateRoutes = ["/tests", "/ranking", "/admin"];
 
   Router.beforeEach((to, from, next) => {
     if (!privateRoutes.includes(to.path)){
