@@ -1,16 +1,6 @@
 import { store } from 'quasar/wrappers'
 import { createStore } from 'vuex'
 
-// import example from './module-example'
-
-/*
- * If not building with SSR mode, you can
- * directly export the Store instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Store instance.
- */
 
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
@@ -18,9 +8,49 @@ export default store(function (/* { ssrContext } */) {
       // example
     },
 
+    state: {
+      activateTimer: false,
+      timeLeft: 60,
+      hits: 0,
+      time: 0,
+      isQuestionArea: false,
+      cpActiveTestArea: 'instructions',
+      //cpActiveTestArea: 'result',
+      questionEditID: 0,
+      formQuestionActive: false,
+      logged: false,
+      isAdmin: false,
+      emailResetPassword: ""
+    },
+    getters:{
+  
+  
+    },
+    mutations: {
+      startTimer(state, numQuestion){
+        state.timeLeft = 60;
+        /* if (numQuestion > 1)
+          state.activateTimer = true; */
+      },
+      stopTimer(state){
+        state.activateTimer = false;
+        this.commit("addTestTime");
+      },
+      addHit(state){
+        state.hits++;
+      },
+      addTestTime(state){
+        state.time += 60 - state.timeLeft;
+      },
+    },
+    actions: {
+  
+  
+    },
+
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only
-    strict: process.env.DEBUGGING
+    //strict: process.env.DEBUGGING
   })
 
   return Store
