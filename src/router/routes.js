@@ -1,6 +1,8 @@
 import About from 'pages/About.vue'
 import Tests from 'pages/Tests.vue'
-import TestArea from 'pages/TestArea.vue'
+import Instructions from 'pages/TestArea/Instructions.vue'
+import TestArea from 'pages/TestArea/Questions.vue'
+import Result from 'pages/TestArea/Result.vue'
 import Contact from 'pages/Contact.vue'
 import Ranking from 'pages/Ranking.vue'
 import Login from 'pages/Login.vue'
@@ -22,7 +24,7 @@ const routes = [
         component: () => import('pages/Index.vue')
       },
       {
-        path: '/about',
+        path: '/sobre',
         name: 'about',
         component: About
       },
@@ -32,17 +34,27 @@ const routes = [
         component: Login
       },
       {
-        path: '/register',
+        path: '/cadastrar',
         name: 'register',
         component: Register
       },
       {
-        path: '/test-area',
+        path: '/jogar/instrucoes',
+        name: 'instructions',
+        component: Instructions
+      },
+      {
+        path: '/jogar/area-teste',
         name: 'test-area',
         component: TestArea
       },
       {
-        path: '/tests',
+        path: '/jogar/resultado',
+        name: 'result',
+        component: Result
+      },
+      {
+        path: '/testes',
         name: 'tests',
         component: Tests
       },
@@ -52,32 +64,32 @@ const routes = [
         component: Ranking
       },
       {
-        path: '/reset-password',
+        path: '/recuperar-senha',
         name: 'resetPassword',
         component: ResetPassword
       },
       {
-        path: '/forgot-password',
+        path: '/esqueci-minha-senha',
         name: 'forgotPassword',
         component: ForgotPassword
       },
       {
-        path: '/admin/questions',
+        path: '/admin/perguntas',
         name: 'questions',
         component: Questions
       },
       {
-        path: '/admin/users',
+        path: '/admin/usuarios',
         name: 'users',
         component: Users
       },
       {
-        path: '/admin/tests',
+        path: '/admin/testes',
         name: 'all-tests',
         component: AllTests
       },
       {
-        path: '/contact',
+        path: '/contato',
         name: 'contact',
         component: Contact
       }

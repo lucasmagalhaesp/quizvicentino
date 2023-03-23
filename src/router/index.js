@@ -29,7 +29,7 @@ export default route(function (/* { store, ssrContext } */) {
   let publicRoutes = ["/", "/contact", "/about", "/login", "/register", "/reset-password", "/forgot-password", "/test-area"];
   let privateRoutes = ["/tests", "/ranking", "/admin"];
 
-  Router.beforeEach((to, from, next) => {
+  /* Router.beforeEach((to, from, next) => {
     if (!privateRoutes.includes(to.path)){
       next()
     }else{
@@ -45,7 +45,7 @@ export default route(function (/* { store, ssrContext } */) {
           console.error(error);
       });
     }
-  });
+  }); */
 
   return Router
 })
