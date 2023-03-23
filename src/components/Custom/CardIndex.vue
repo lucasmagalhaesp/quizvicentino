@@ -11,10 +11,10 @@
             </q-card-section> -->
         </q-card-section>
 
-        <q-separator />
+        <!-- <q-separator /> -->
 
         <q-card-actions>
-            <q-btn :label="labelBtn" color="blue-grey-4" class="full-width" :to="linkBtn" />
+            <q-btn :label="labelBtn" class="full-width" :to="linkBtn" />
         </q-card-actions>
     </q-card>
 </template>
@@ -26,3 +26,12 @@ export default {
 
 }
 </script>
+<style scoped>
+    .q-card__section{
+        background: #DCE4E3 
+    }
+    .q-btn{
+        background: #00916E;
+        color: #FFF
+    }
+</style>

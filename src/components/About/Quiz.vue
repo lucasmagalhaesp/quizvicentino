@@ -1,12 +1,11 @@
 <template>
     <div class="row">
         <div class="col-12">
-            <page-title>Quiz Vicentino?</page-title>
-            <section class="q-mt-sm text-justify">
-                <div class="row">
-                    <div class="col-md-5">
+            <div class="q-mt-sm text-justify">
+                <div class="row justify-center">
+                    <!-- <div class="col-md-5">
                         <img src="images/logo.png" alt="" />
-                    </div>
+                    </div> -->
                     <div class="col-md-7">
                         <p class="text-success text-center">
                             <strong>LOUVADO SEJA O NOSSO SENHOR JESUS CRISTO!!!</strong>
@@ -14,7 +13,7 @@
                         <p>
                             O QUIZ VICENTINO foi criado para testar os conhecimentos dos 
                             vicentinos sobre a Sociedade de São Vicente de Paulo e outros assuntos relacionados. 
-                            O principal objetivo é incentivar a busca novas informações sobre a SSVP, 
+                            O principal objetivo é incentivar a busca de novas informações sobre a SSVP, 
                             ajudando assim a melhorar o desenvolvimento do nosso trabalho junto às famílias assistidas.
                         </p>
                         <p>
@@ -22,18 +21,25 @@
                             Faça quantos testes desejar!
                         </p>
                         <p>
-                            Se esse é o seu primeiro acesso ao site, <strong><router-link tag="a" to="/register">faça o seu cadastro</router-link></strong>. Se já é cadastrado,
-                            <strong><router-link tag="a" to="/login">faça login</router-link></strong> e começe a realizar os seus testes.
+                            Você pode realizar os testes de duas formas: sendo um <strong>usuário cadastrado</strong> ou <strong>usuário visitante</strong>.
+                        </p>
+                        <p>
+                            Um usuário cadastrado tem acesso a todos os seus testes já realizados (inclusive gerar um arquivo PDF do teste), acessar o ranking
+                            onde poderá comparar o seu melhor resultado com o de outros usuários, etc.
+                        </p>
+                        <p>
+                            Se esse é o seu primeiro acesso ao site e deseja se cadastrar, <strong><router-link tag="a" to="/cadastrar">Clique aqui</router-link></strong>. Se já é cadastrado,
+                            <strong><router-link tag="a" to="/login">Faça login</router-link></strong> e começe a realizar os seus testes.
                         </p>
                         <p>
                             Caso você ainda não conheça a SOCIEDADE DE SÃO VICENTE DE PAULO, <strong><a href="http://www.ssvpbrasil.org.br/" target="_blank">clique aqui</a></strong> 
-                            e saiba os trabalhos que desenvolvemos.
+                            e entenda os trabalhos que desenvolvemos.
                         </p>
-                        <p> MUITO OBRIGADO POR PRESTIGIAR ESSE TRABALHO!!!</p>
+                        <p><strong>MUITO OBRIGADO POR PRESTIGIAR ESSE TRABALHO!!!</strong></p>
                     </div>
 
                 </div>
-            </section>
+            </div>
         </div>
     </div>
 </template>
