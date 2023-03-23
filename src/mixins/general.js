@@ -1,13 +1,18 @@
 export default {
     data(){
         return {
-
+            ignorarValidacaoDatas: ['', null, "0000-00-00", "0000-00-00 00:00:00", "2000-01-01", "2000-01-01 00:00:00"]
         }
     },
     methods:{
-        formatDateBR: data => new Date(data.replace("-", ",")).toLocaleDateString('pt-BR'),
+        formatDateBR(data){ return this.ignorarValidacaoDatas.includes(data) ?  "" : new Date(data+"T00:00:00.0").toLocaleDateString("pt-BR")},
         formatMoneyBR: valor => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-
+        formataDataTimeBR(data) { return this.ignorarValidacaoDatas.includes(data) ?  "" : new Date(data.replace("-", ",")).toLocaleDateString("pt-BR", {hour:  "2-digit", minute: "2-digit", second: "2-digit"}) },
+        dateFormatMobile(date){
+            let dateTime = this.formataDataTimeBR(date).split(":");
+            dateTime.pop();
+            return dateTime.join(":").replace(",", "");
+        },
         formatDateTimeBR(date) {
             let data = new Date(date);
                 let dia  = data.getDate().toString();
@@ -19,8 +24,8 @@ export default {
                 let horaF = hora.length == 1 ? '0' + hora : hora;
                 let minuto = data.getMinutes().toString();
                 let minutoF = minuto.length == 1 ? '0' + minuto : minuto;
-               /*  let segundos = data.getSeconds().toString();
-                let segundosF = segundos.length == 1 ? '0' + segundos : segundos; */
+                let segundos = data.getSeconds().toString();
+                let segundosF = segundos.length == 1 ? '0' + segundos : segundos; 
             return diaF + "/" + mesF + "/" + anoF + " " + horaF + ":" + minutoF;
         },
         convertSecondsinMinutes(seconds){
