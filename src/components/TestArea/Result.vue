@@ -1,11 +1,5 @@
 <template>
     <div class="col">
-        <page-title>Resultado</page-title>
-        <transition
-            appear
-            enter-active-class="animated fadeIn"
-            leave-active-class="animated fadeOut"
-        >
             <div v-show="!loadInfos">
                 <div class="row justify-center q-mt-md">
                     <img :src="img" alt="" style="max-height: 200px">
@@ -24,7 +18,10 @@
                                 <p v-html="resultText" class="result-text"></p>
                                 <div class="row btns-result">
                                     <div class="col-xs-12" style="margin-bottom: 10px">
-                                        <q-btn color="primary" @click="playAgain" label="Jogar Novamente" />
+                                        <q-btn label="Jogar Novamente" :class="$q.screen.lt.sm ? 'q-mt-md full-width' : ''" icon="fas fa-gamepad" color="primary" @click="playAgain" />
+                                        <q-btn v-if="logged" :class="$q.screen.lt.sm ? 'q-mt-md full-width' : ''" label="Relatório" icon="fas fa-print" color="primary" @click="print" class="q-ml-md" />
+                                        <q-btn v-if="logged" :class="$q.screen.lt.sm ? 'q-mt-md full-width' : ''" label="Meus Testes" icon="fas fa-list-alt" color="primary" @click="$router.push({ name: 'tests' })" class="q-ml-md" />
+                                        <q-btn v-if="logged" :class="$q.screen.lt.sm ? 'q-mt-md full-width' : ''" label="Ranking" icon="fas fa-list-ol" color="primary" @click="$router.push('/ranking')" class="q-ml-md" />
                                     </div>
                                 </div>
                                 <!--     <div class="col-xs-12" style="margin-bottom: 10px">
@@ -39,7 +36,6 @@
                     </div>
                 </div>
             </div>
-        </transition>
         <q-inner-loading :showing="loadInfos">
             <q-spinner
                 color="secondary"
@@ -52,7 +48,7 @@
 </template>
 
 <script>
-import testData from "../../mixins/testData";;
+import testData from "../../mixins/testData";
 import PageTitle from '../Custom/PageTitle';
 export default {
     components:{ PageTitle },
@@ -64,9 +60,10 @@ export default {
         }
     },
     created(){
-        this.$store.state.isQuestionArea = false;
+        this.$store.commit("goToNextQuestion", false);
         this.loadInfos = true;
-        axios(`tests/resultText/${this.hits}`).then(response => {
+        axios(`tests/resultText/${this.hits}`)
+        .then(response => {
             response = response.data;
             if (response.success) this.resultText = response.data;
         })
@@ -74,23 +71,69 @@ export default {
     },
     methods:{
         playAgain(){
-            this.$store.state.cpActiveTestArea = ""
+            this.$router.push({ name: "instructions" });
         },
         myTests(){
             this.$router.push({ name: "tests" });
         },
         ranking(){
             this.$router.push({ name: "ranking" });
+        },
+        print(){
+            let id = this.$store.state.lastTestID;
+            if (id == null) {
+                alert("Número do teste não identificado. Acesse esse relatório através da página 'Meus testes'");
+                return false;
+            }
+
+            this.$q.loading.show({ message: "Gerando relatório..." });
+            axios(`tests/print/${id}`, { responseType: 'blob',
+            headers: {
+                Authorization: 'Bearer '+this.$store.state.token
+            }})
+            .then(resposta => {
+                let dadosResposta = resposta.data;
+                if (!["", undefined, null].includes(dadosResposta)){
+                    let blob = new Blob([dadosResposta], {
+                        type: 'application/pdf'
+                    });
+
+                    let url = window.URL.createObjectURL(blob)
+                    window.open(url);
+                }else{
+                    console.error("erro ao gerar o documento PDF");
+                }
+            })
+            .catch(error => {
+                if (error.response.status == 500){
+                    this.$q.dialog({
+                        title: "Erro",
+                        message: "Esse teste não possui relatório",
+                        html: true,
+                        class: "bg-negative text-white q-py-sm q-px-sm",
+                        ok: {
+                            push: true,
+                            color: "white",
+                            textColor: "black",
+                            label: "Ok"
+                        }
+                    });
+                }
+            })
+            .then(() => this.$q.loading.hide());
         }
     },
     computed:{
         img(){
-            return `images/result/${this.hits}.png`;
+            return `images/result/${this.hits}.png`
+        },
+        userType(){
+            return this.$store.state.user.type
+        },
+        logged(){
+            return this.$store.state.logged
         }
     },
-    beforeDestroy(){
-        this.$store.state.cpActiveTestArea = "";
-    }
 }
 </script>
 <style>

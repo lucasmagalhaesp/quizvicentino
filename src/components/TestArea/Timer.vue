@@ -32,7 +32,11 @@ export default {
     },
     watch:{
         activateTimer(value){
-            value ? this.cronometro() : this.pararCronometro()
+            if(value){
+                this.cronometro();
+            }else{
+                this.pararCronometro();
+            }
         }
     },
     methods:{
@@ -42,14 +46,20 @@ export default {
         contador(){
             if (this.timeLeft == 0){
                 this.$store.commit("stopTimer");
-            }else this.timeLeft--;
+            }else {
+                this.timeLeft--;
+                //console.log(this.timeLeft);
+            }
         },
         pararCronometro(){
             clearInterval(this.interval);
         }
     },
-    beforeDestroy(){
+    beforeUnmount(){
         this.pararCronometro();
     }
+    /* beforeDestroy(){
+        this.pararCronometro();
+    } */
 }
 </script>
