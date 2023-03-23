@@ -1,7 +1,26 @@
 /* app global css */
+
+body{
+    background-color: #F0EEF3;
+    font-family: Georgia, Arial;
+    font-size: 15px;
+}
+
+/* Inverter botões OK e Cancelar no modal gerado pelo $q.dialog */
+.q-dialog-plugin .q-card__actions{
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+}
+
+.q-dialog-plugin .q-card__actions .q-btn{
+    margin-left: 10px
+}
+/*fim*/
+
 .q-layout__section--marginal{
     /* background: #00796b */
-    background: #00916E ;
+    /* background: #00916E ; */
+    background: #006E3E
 }
 
 .q-item__section--avatar{
@@ -18,8 +37,8 @@
 }
 
 .my-card{
-    background: #4D7C8A;
-    border: #4D7C8A 2px solid;
+    background: #DCE4E3;
+    border: #00916E  2px solid;
 }
 
 .q-card__section, .q-banner{
@@ -29,5 +48,17 @@
 }
 
 section{
-    padding: 30px 50px
+    padding: 30px 0
+}
+
+.q-table__top, .q-table__bottom, thead tr:first-child th{
+    background-color: #DCE4E3
+}
+
+.q-btn .q-icon {
+    font-size: inherit !important; 
+}
+
+.table-data-mobile div{
+    margin: 5px 0
 }
