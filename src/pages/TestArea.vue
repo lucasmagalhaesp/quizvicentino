@@ -20,7 +20,8 @@
             Question, Result, Instructions
         },
         created(){
-            this.$store.state.isQuestionArea = false;
+            this.$store.commit("isQuestionArea", false);
+            this.$store.commit("cpActiveTestArea", "instructions");
         },
         computed:{
             cpActiveTestArea(){
