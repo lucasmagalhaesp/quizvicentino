@@ -1,53 +1,51 @@
 <template>
-    <div class="row justify-center">
-        <div class="col-12 q-mb-md">
-            <div v-if="!showFilters" class="row justify-end q-gutter-sm">
-                <q-btn color="info" @click="newQuestion" label="Pergunta" icon="fas fa-plus" />
-                <q-btn color="secondary" @click="showFilters = true" label="Filtrar" icon="fas fa-filter"/>
+    <div class="col-12 q-mb-md">
+        <div v-if="!showFilters" class="row justify-end q-gutter-sm q-mb-md">
+            <q-btn color="info" @click="newQuestion" label="Pergunta" icon="fas fa-plus" />
+            <q-btn color="secondary" @click="showFilters = true" label="Filtrar" icon="fas fa-filter"/>
+        </div>
+        <div class="row q-col-gutter-md items-end q-mb-md" v-else>
+            <div class="col-12 col-md-4">
+                <label for="field-name">Filtrar pela descrição:</label>
+                <q-input color="green-4" bg-color="white" outlined dense v-model="filter.description" class="q-mt-sm" clearable>
+                    <template v-slot:prepend>
+                        <q-icon name="fas fa-list" />
+                    </template>
+                </q-input>
             </div>
-            <div class="row q-col-gutter-md items-end" v-else>
-                <div class="col-12 col-md-4">
-                    <label for="field-name">Filtrar pela descrição:</label>
-                    <q-input color="green-4" bg-color="white" outlined dense v-model="filter.description" class="q-mt-sm" clearable>
-                        <template v-slot:prepend>
-                            <q-icon name="fas fa-list" />
-                        </template>
-                    </q-input>
-                </div>
-                <div class="col-12 col-md-2">
-                    <label for="field-hits">Perguntas Ativas?</label><br />
-                    <q-btn-toggle
-                        v-model="filter.active"
-                        push
-                        glossy
-                        toggle-color="primary"
-                        :options="[
-                            { value: '', label: 'Geral' },
-                            { value: 'S', label: 'Sim' },
-                            { value: 'N', label: 'Não' }
-                        ]"
-                        class="q-mt-sm"
-                    />
-                </div>
-                <div class="col-12 col-md-2">
-                    <label for="field-date">Filtrar pela data de cadastro:</label>
-                    <q-input color="green-4" bg-color="white" outlined dense v-model="filter.created_at" type="date" class="q-mt-sm" clearable>
-                        <template v-slot:prepend>
-                            <q-icon name="fas fa-calendar" />
-                        </template>
-                    </q-input>
-                </div>
-                <div class="col-12 col-md-2">
-                    <label for="field-date">Filtrar pela data de expiração:</label>
-                    <q-input color="green-4" bg-color="white" outlined dense v-model="filter.expiration_date" type="date" class="q-mt-sm" clearable>
-                        <template v-slot:prepend>
-                            <q-icon name="fas fa-calendar" />
-                        </template>
-                    </q-input>
-                </div>
-                <div class="col-12 col-md-2 text-right">
-                    <q-btn color="negative" @click="showFilters = false" label="Fechar" icon="fas fa-window-close"/>
-                </div>
+            <div class="col-12 col-md-2">
+                <label for="field-hits">Perguntas Ativas?</label><br />
+                <q-btn-toggle
+                    v-model="filter.active"
+                    push
+                    glossy
+                    toggle-color="primary"
+                    :options="[
+                        { value: '', label: 'Geral' },
+                        { value: 'S', label: 'Sim' },
+                        { value: 'N', label: 'Não' }
+                    ]"
+                    class="q-mt-sm"
+                />
+            </div>
+            <div class="col-12 col-md-2">
+                <label for="field-date">Filtrar pela data de cadastro:</label>
+                <q-input color="green-4" bg-color="white" outlined dense v-model="filter.created_at" type="date" class="q-mt-sm" clearable>
+                    <template v-slot:prepend>
+                        <q-icon name="fas fa-calendar" />
+                    </template>
+                </q-input>
+            </div>
+            <div class="col-12 col-md-2">
+                <label for="field-date">Filtrar pela data de expiração:</label>
+                <q-input color="green-4" bg-color="white" outlined dense v-model="filter.expiration_date" type="date" class="q-mt-sm" clearable>
+                    <template v-slot:prepend>
+                        <q-icon name="fas fa-calendar" />
+                    </template>
+                </q-input>
+            </div>
+            <div class="col-12 col-md-2 text-right">
+                <q-btn color="negative" @click="showFilters = false" label="Fechar" icon="fas fa-window-close"/>
             </div>
         </div>
         <q-table
@@ -127,6 +125,7 @@
             </template>
 
         </q-table>
+    
     </div>
     
     <!-- modal com o formulário para adicionar/editar perguntas -->
