@@ -1,19 +1,19 @@
 <template>
     <q-page>
-        <transition
-            enter-active-class="animated slideInLeft"
-            mode="out-in" appear
-        >
-            <forgot-password></forgot-password>
-        </transition>
+        <page-title>Recuperar Senha</page-title>
+        <div class="row justify-center items-center q-pa-lg">
+            <forgot-password />
+        </div>
     </q-page>
 </template>
 
 <script>
+import PageTitle from "components/Custom/PageTitle"
 import ForgotPassword from "components/Auth/ForgotPassword";
 export default {
     components:{
-        ForgotPassword
+        ForgotPassword,
+        PageTitle
     }
 }
 </script>

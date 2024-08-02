@@ -1,9 +1,5 @@
 <template>
-    <div class="row justify-center items-center">
-        <div class="col-12">
-            <page-title>Recuperar Senha</page-title>
-        </div>
-        <section class="col-12 col-md-5 q-mt-lg">
+    <section class="col-12 col-md-5 q-mt-lg">
         <template v-if="!sendedEmail">
             <q-form class="col" @submit.prevent.stop="forgotPassword" lazy-rules>
                 <q-chip v-if="informEmailAlert" id="email" color="info" class="full-width" square text-color="white">
@@ -37,8 +33,7 @@
                 </div>
             </q-form>
         </template>
-        </section>
-    </div>
+    </section>
 </template>
 
 <script>
