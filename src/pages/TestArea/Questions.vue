@@ -2,7 +2,9 @@
     <q-page>
         <page-title>{{ titleQuestion }}</page-title>
         <div class="row q-pa-lg">
-            <question />
+            <div class="col-12">
+                <question />
+            </div>
         </div>
     </q-page>
 </template>

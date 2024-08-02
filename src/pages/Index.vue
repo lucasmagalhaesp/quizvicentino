@@ -10,24 +10,24 @@
             <carousel />
           </div>
         </div>
-        <section class="q-my-lg">
+        <section class="q-my-md">
           <div class="row justify-center">
-            <div class="col-8 col-md-3 q-px-md">
+            <div class="col-9 col-md-3 q-px-md">
               <card-index img="images/index/quiz.png" linkBtn="/sobre" labelBtn="Sobre" />
             </div>
-            <div class="col-8 col-md-3 q-px-md" v-if="!logged">
+            <div class="col-9 col-md-3 q-px-md" v-if="!logged">
               <card-index img="images/index/registro.png" linkBtn="/cadastrar" labelBtn="Cadastre-se" />
             </div>
-            <div class="col-8 col-md-3 q-px-md" v-if="!logged">
+            <div class="col-9 col-md-3 q-px-md" v-if="!logged">
               <card-index img="images/index/login.png" linkBtn="/login" labelBtn="Login" />
             </div>
-            <div class="col-8 col-md-3 q-px-md">
+            <div class="col-9 col-md-3 q-px-md">
               <card-index img="images/index/jogar.png" linkBtn="/jogar/instrucoes" labelBtn="Jogar" />
             </div>
-            <div class="col-8 col-md-3 q-px-md" v-if="logged">
+            <div class="col-9 col-md-3 q-px-md" v-if="logged">
               <card-index img="images/index/testes.png" linkBtn="/testes" labelBtn="Meus Testes" />
             </div>
-            <div class="col-8 col-md-3 q-px-md" v-if="logged">
+            <div class="col-9 col-md-3 q-px-md" v-if="logged">
               <card-index img="images/index/ranking.png" linkBtn="/ranking" labelBtn="Ranking" />
             </div>
           </div>

@@ -6,7 +6,7 @@
         <div class="row q-col-gutter-md items-end" v-else>
             <div class="col-12 col-md-6">
                 <label for="field-name">Filtrar pelo nome:</label>
-                <q-input color="green-4" @keyup="filter.name = filter.name.toUpperCase()" bg-color="white" outlined dense v-model="filter.name" class="q-mt-sm" clearable>
+                <q-input color="green-4" @keyup="filter.name = filter.name.toUpperCase()" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="filter.name" class="q-mt-sm" clearable>
                     <template v-slot:prepend>
                         <q-icon name="fas fa-user" />
                     </template>
@@ -14,7 +14,7 @@
             </div>
             <div class="col-12 col-md-6">
                 <label for="field-name">Filtrar pelo e-mail:</label>
-                <q-input color="green-4" bg-color="white" outlined dense v-model="filter.email" class="q-mt-sm" clearable>
+                <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="filter.email" class="q-mt-sm" clearable>
                     <template v-slot:prepend>
                         <q-icon name="fas fa-at" />
                     </template>
@@ -22,7 +22,7 @@
             </div>
             <div class="col-12 col-md-4">
                 <label for="field-date">Filtrar pelo estado:</label>
-                <q-select color="green-4" bg-color="white" outlined dense v-model="selectedState" :options="states" class="q-mt-sm">
+                <q-select color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="selectedState" :options="states" class="q-mt-sm">
                     <template v-slot:prepend>
                         <q-icon name="far fa-map" />
                     </template>
@@ -30,7 +30,7 @@
             </div>
             <div class="col-12 col-md-4">
                 <label for="field-date">Filtrar pela cidade:</label>
-                <q-input color="green-4" bg-color="white" outlined dense v-model="filter.city" class="q-mt-sm" clearable>
+                <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="filter.city" class="q-mt-sm" clearable>
                     <template v-slot:prepend>
                         <q-icon name="fas fa-map-marker-alt" />
                     </template>
@@ -103,7 +103,7 @@
                                 <strong>Cadastrado em:</strong> 
                             </div>
                             <div class="col-8">
-                                {{ dateFormatMobile(user.row.created_at) }}
+                                {{ formatDateTimeBR(user.row.created_at) }}
                             </div>
                         </div>
                     </q-card-section>

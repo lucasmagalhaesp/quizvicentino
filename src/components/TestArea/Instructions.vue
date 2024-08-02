@@ -61,13 +61,13 @@
                         </q-card-section>
                     </q-card>
                     <template v-else>
-                        <img v-if="!$q.screen.lt.sm" src="images/instructions/play.jpg" alt="Começar o teste" class="full-width">
+                        <img v-if="!$q.screen.lt.sm" src="images/instructions/instructions.png" alt="Começar o teste" class="full-width">
                     </template>
                 </div>
             </div>
-            <div class="row justify-center q-gutter-lg" style="margin-top: 15px" v-if="userType != undefined && userType != null">
-                <q-btn color="secondary" icon="fas fa-gamepad" @click="play" label="Iniciar" class="q-ml-md" />
-                <q-btn v-if="!logged" @click="$router.push({ name: 'register'})" icon="fab fa-wpforms" flat color="primary" label="CADASTRAR-SE" />
+            <div class="row justify-center" style="margin-top: 15px" v-if="userType != undefined && userType != null">
+                <q-btn color="secondary" icon="fas fa-gamepad" @click="play" label="Iniciar" class="q-ml-md" :class="$q.screen.lt.sm ? 'full-width' : ''" />
+                <q-btn v-if="!logged" @click="$router.push({ name: 'register'})" icon="fab fa-wpforms" flat color="primary" label="CADASTRAR-SE" :class="$q.screen.lt.sm ? 'full-width' : ''" />
             </div>
         </div>
     </div>

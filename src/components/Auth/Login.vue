@@ -3,7 +3,7 @@
         <div class="col-12 col-md-4 q-mt-lg">
             <div class="row q-mb-md">
                 <div class="col-12">
-                    Ainda não é cadastrado? <q-btn dense to="/cadastrar" color="primary" flat label="Cadastre-se" no-caps />.
+                    Ainda não é cadastrado? <q-btn :dense="!$q.screen.lt.sm" to="/cadastrar" color="primary" flat label="Cadastre-se" no-caps />.
                 </div>
             </div>
             <q-form @submit.prevent.stop="login" lazy-rules class="col">
@@ -11,7 +11,7 @@
 
                 <div class="row q-col-gutter-sm">
                     <div class="col-12">
-                        <q-input color="green-4" bg-color="white" outlined dense v-model="form.email" label="E-mail" type="email" :rules="[val => !!val || 'Informe seu e-mail']">
+                        <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="form.email" label="E-mail" type="email" :rules="[val => !!val || 'Informe seu e-mail']">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-at" />
                             </template>
@@ -19,7 +19,7 @@
                     </div>
                 
                     <div class="col-12">
-                        <q-input color="green-4" bg-color="white" outlined dense v-model="form.password" label="Senha" type="password" :rules="[val => !!val || 'Informe sua senha']">
+                        <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="form.password" label="Senha" type="password" :rules="[val => !!val || 'Informe sua senha']">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-key" />
                             </template>
@@ -29,8 +29,8 @@
                 </div>
             
                 <div class="row justify-between" style="margin: 15px 0">
-                    <q-btn @click="$router.push({name: 'forgotPassword'})" color="primary" flat label="Esqueci minha senha" no-caps />
-                    <q-btn :loading="load" color="secondary" icon="fas fa-sign-in-alt" type="submit" label="Entrar" />
+                    <q-btn @click="$router.push({name: 'forgotPassword'})" color="primary" flat label="Esqueci minha senha" no-caps :class="$q.screen.lt.sm ? 'full-width' : ''" :style="$q.screen.lt.sm ? 'order: 2' : 'order: 1'" />
+                    <q-btn :loading="load" color="secondary" icon="fas fa-sign-in-alt" type="submit" label="Entrar" :class="$q.screen.lt.sm ? 'full-width' : ''" :style="$q.screen.lt.sm ? 'order: 1' : 'order: 2'" />
                 </div>
             </q-form>
         </div>

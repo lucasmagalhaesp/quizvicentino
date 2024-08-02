@@ -7,7 +7,7 @@
         <div class="row q-col-gutter-md items-end q-mb-md" v-else>
             <div class="col-12 col-md-4">
                 <label for="field-name">Filtrar pela descrição:</label>
-                <q-input color="green-4" bg-color="white" outlined dense v-model="filter.description" class="q-mt-sm" clearable>
+                <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="filter.description" class="q-mt-sm" clearable>
                     <template v-slot:prepend>
                         <q-icon name="fas fa-list" />
                     </template>
@@ -30,7 +30,7 @@
             </div>
             <div class="col-12 col-md-2">
                 <label for="field-date">Filtrar pela data de cadastro:</label>
-                <q-input color="green-4" bg-color="white" outlined dense v-model="filter.created_at" type="date" class="q-mt-sm" clearable>
+                <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="filter.created_at" type="date" class="q-mt-sm" clearable>
                     <template v-slot:prepend>
                         <q-icon name="fas fa-calendar" />
                     </template>
@@ -38,7 +38,7 @@
             </div>
             <div class="col-12 col-md-2">
                 <label for="field-date">Filtrar pela data de expiração:</label>
-                <q-input color="green-4" bg-color="white" outlined dense v-model="filter.expiration_date" type="date" class="q-mt-sm" clearable>
+                <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="filter.expiration_date" type="date" class="q-mt-sm" clearable>
                     <template v-slot:prepend>
                         <q-icon name="fas fa-calendar" />
                     </template>
@@ -100,7 +100,7 @@
                                 <strong>Cadastrado em:</strong> 
                             </div>
                             <div class="col-8">
-                                {{ dateFormatMobile(question.row.created_at).split(" ")[0] }}
+                                {{ formatDateTimeBR(question.row.created_at) }}
                             </div>
                         </div>
                         <q-separator />
@@ -134,7 +134,7 @@
             <q-card-section class="row items-center q-pb-none bg-primary text-white">
                 <div class="text-h6">{{ questionID > 0 ? 'Atualizar' : 'Cadastrar' }} pergunta</div>
                 <q-space />
-                <q-btn icon="close" flat round dense v-close-popup />
+                <q-btn icon="close" flat round :dense="!$q.screen.lt.sm" v-close-popup />
             </q-card-section>
             <q-card-section class="q-my-md q-mx-sm">
                 <div class="row">

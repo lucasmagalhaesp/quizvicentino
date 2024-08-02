@@ -3,13 +3,13 @@
         <div class="col-12 col-md-6 q-mt-lg">
             <div class="row q-mb-md">
                 <div class="col-12 text-center">
-                    Já é cadastrado? <q-btn dense to="/login" color="primary" flat label="Faça login" no-caps />.
+                    Já é cadastrado? <q-btn :dense="!$q.screen.lt.sm" to="/login" color="primary" flat label="Faça login" no-caps />.
                 </div>
             </div>
             <q-form @submit.prevent.stop="register" lazy-rules >
                 <div class="row q-col-gutter-sm">
                     <div class="col-12">
-                        <q-input color="green-4" bg-color="white" outlined dense v-model="form.name" label="Nome" :rules="[val => !!val || 'Informe seu nome']">
+                        <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="form.name" label="Nome" :rules="[val => !!val || 'Informe seu nome']">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-user" />
                             </template>
@@ -17,7 +17,7 @@
                     </div>
                     
                     <div class="col-12 col-md-4">
-                        <q-select color="green-4" bg-color="white" outlined dense v-model="selectedState" :options="states" label="UF" :rules="[val => !!val || 'Informe seu estado']">
+                        <q-select color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="selectedState" :options="states" label="UF" :rules="[val => !!val || 'Informe seu estado']">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-map-marker-alt" />
                             </template>
@@ -25,7 +25,7 @@
                     </div>
                     
                     <div class="col-12 col-md-8">
-                        <q-select color="green-4" bg-color="white" outlined dense v-model="selectedCity" :options="cities" label="Cidade" :rules="[val => !!val || 'Informe sua cidade']">
+                        <q-select color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="selectedCity" :options="cities" label="Cidade" :rules="[val => !!val || 'Informe sua cidade']">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-map-marker-alt" />
                             </template>
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="col-12">
-                        <q-input color="green-4" bg-color="white" outlined dense v-model="form.email" label="E-mail" type="email" :rules="[val => !!val || 'Informe seu e-mail', val => uniqueEmail == 1 || 'E-mail já cadastrado']">
+                        <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="form.email" label="E-mail" type="email" :rules="[val => !!val || 'Informe seu e-mail', val => uniqueEmail == 1 || 'E-mail já cadastrado']">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-at" />
                             </template>
@@ -41,7 +41,7 @@
                     </div>
                     
                     <div class="col-12 col-md-6">
-                        <q-input color="green-4" bg-color="white" outlined dense v-model="form.password" label="Senha" type="password" :rules="[val => !!val || 'Informe sua senha', val => val.length > 5 || 'A senha deve ter no mínimo 6 caracteres']">
+                        <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="form.password" label="Senha" type="password" :rules="[val => !!val || 'Informe sua senha', val => val.length > 5 || 'A senha deve ter no mínimo 6 caracteres']">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-key" />
                             </template>
@@ -49,7 +49,7 @@
                     </div>
                     
                     <div class="col-12 col-md-6">
-                        <q-input color="green-4" bg-color="white" outlined dense v-model="form.confirmPassword" label="Confirme sua senha" type="password" :rules="[val => !!val || 'Confirme a senha digitada acima', val => val == form.password || 'Senhas não coincidem']">
+                        <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="form.confirmPassword" label="Confirme sua senha" type="password" :rules="[val => !!val || 'Confirme a senha digitada acima', val => val == form.password || 'Senhas não coincidem']">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-key" />
                             </template>
@@ -59,7 +59,7 @@
                 </div>
                 
                 <div class="row justify-center" style="margin-top: 15px">
-                    <q-btn color="secondary" type="submit" label="Cadastrar" icon="fas fa-save" />
+                    <q-btn color="secondary" type="submit" label="Cadastrar" icon="fas fa-save" :class="$q.screen.lt.sm ? 'full-width' : ''" />
                 </div>
             </q-form>
         </div>

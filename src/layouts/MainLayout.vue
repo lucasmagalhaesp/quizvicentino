@@ -31,24 +31,24 @@
             <q-btn-dropdown v-if="isAdmin" class="menus-person" style="color: #D8E9E1" flat icon="fas fa-unlock-alt" label="Área restrita">
               <q-list>
                 <q-item clickable @click="$router.push({ name: 'users' })">
-                  <q-item-section>
+                  <q-item-section class="col-4">
                     <q-icon color="secondary" name="fas fa-users" />
                   </q-item-section>
-                  <q-item-section>USUÁRIOS</q-item-section>
+                  <q-item-section class="col-8">USUÁRIOS</q-item-section>
                 </q-item>
 
                 <q-item clickable @click="$router.push({ name: 'all-tests' })">
-                  <q-item-section>
+                  <q-item-section class="col-4">
                     <q-icon color="secondary" name="fas fa-list-alt" />
                   </q-item-section>
-                  <q-item-section>TESTES</q-item-section>
+                  <q-item-section class="col-8">TESTES</q-item-section>
                 </q-item>
 
                 <q-item clickable @click="$router.push({ name: 'questions' })">
-                  <q-item-section>
+                  <q-item-section class="col-4">
                     <q-icon color="secondary" name="fas fa-question" />
                   </q-item-section>
-                  <q-item-section>PERGUNTAS</q-item-section>
+                  <q-item-section class="col-8">PERGUNTAS</q-item-section>
                 </q-item>
               </q-list>
             </q-btn-dropdown>
@@ -66,7 +66,7 @@
     </q-header>
 
     <q-drawer
-      class="mobile-only"
+      class="mobile-only menu-mobile"
       v-model="leftDrawerOpen"
       bordered
       content-class="bg-grey-3"
@@ -86,6 +86,60 @@
           v-bind="link"
         />
         <template v-if="logged">
+          <!-- área administrativa -->
+          <q-expansion-item
+            v-if="isAdmin"
+            expand-separator
+            icon="fas fa-unlock-alt"
+            label="Área Restrita"
+          >
+            <q-item
+              clickable
+              @click="$router.push({ name: 'users' })"
+              v-ripple
+            >
+              <q-item-section
+                avatar
+              >
+                <q-icon name="fas fa-users" style="color: #00796b" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Usuários</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item
+              clickable
+              @click="$router.push({ name: 'all-tests' })"
+              v-ripple
+            >
+              <q-item-section
+                avatar
+              >
+                <q-icon name="fas fa-list-alt" style="color: #00796b" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Testes</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item
+              clickable
+              @click="$router.push({ name: 'questions' })"
+              v-ripple
+            >
+              <q-item-section
+                avatar
+              >
+                <q-icon name="fas fa-question" style="color: #00796b" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Perguntas</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-expansion-item>
+
           <q-separator />
           <!-- botão logoff -->
           <q-item
@@ -94,11 +148,11 @@
             v-ripple
           >
             <q-item-section avatar>
-              <q-icon name="fas fa-sign-out-alt" style="color: #00796b"/>
+              <q-icon name="fas fa-sign-out-alt" color="negative" />
             </q-item-section>
 
             <q-item-section>
-              <q-item-label>Sair</q-item-label>
+              <q-item-label class="text-negative">Sair</q-item-label>
             </q-item-section>
           </q-item>
         </template>
@@ -130,7 +184,7 @@
     <q-footer elevate class="">
       <q-toolbar class="text-white shadow-2 justify-center">
         <div class="row">
-          Quiz Vicentino {{ new Date().getFullYear() }} - Todos os direitos reservados
+          Quiz Vicentino {{ new Date().getFullYear() }} <span v-if="!$q.screen.lt.sm"> - Todos os direitos reservados </span>
         </div>
       </q-toolbar>
     </q-footer>
@@ -218,7 +272,8 @@ export default {
   mounted(){
     document.querySelectorAll(".q-tab__content").forEach(comp => {
       comp.style = "align-self: inherit";
-    })
+    });
+    
   },
   computed:{
     logged(){

@@ -8,10 +8,10 @@
                     <div class="col-xs-12">
                         <div class="panel panel-primary text-center" style="padding: 40px 0">
                             <div class="panel-body result-datas">
-                                <q-chip outline color="primary" text-color="white" icon="fas fa-thumbs-up">
+                                <q-chip :size="$q.screen.lt.sm ? 'lg' : 'md'" outline color="primary" text-color="white" icon="fas fa-thumbs-up">
                                     Acertos: {{ hits }}
                                 </q-chip>
-                                <q-chip outline color="primary" text-color="white" icon="fas fa-clock">
+                                <q-chip :size="$q.screen.lt.sm ? 'lg' : 'md'" outline color="primary" text-color="white" icon="fas fa-clock">
                                     Tempo gasto: {{ time }}
                                 </q-chip>
                                 
@@ -24,13 +24,6 @@
                                         <q-btn v-if="logged" :class="$q.screen.lt.sm ? 'q-mt-md full-width' : ''" label="Ranking" icon="fas fa-list-ol" color="primary" @click="$router.push('/ranking')" class="q-ml-md" />
                                     </div>
                                 </div>
-                                <!--     <div class="col-xs-12" style="margin-bottom: 10px">
-                                        <q-btn color="orange" @click="myTests" class="full-width" label="Meus testes" />
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <q-btn color="negative" @click="ranking" class="full-width" label="Ranking" />
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>

@@ -10,7 +10,7 @@
             <div class="row q-col-gutter-md items-end" v-else>
                 <div class="col-12 col-md-3">
                     <label for="field-name">Filtrar pelo nome:</label>
-                    <q-input color="green-4" @keyup="filter.name = filter.name.toUpperCase()" bg-color="white" outlined dense v-model="filter.name" clearable class="q-mt-sm">
+                    <q-input color="green-4" @keyup="filter.name = filter.name.toUpperCase()" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="filter.name" clearable class="q-mt-sm">
                         <template v-slot:prepend>
                             <q-icon name="fas fa-user" />
                         </template>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-12 col-md-3">
                     <label for="field-date">Filtrar pela data:</label>
-                    <q-input color="green-4" bg-color="white" outlined dense v-model="filter.date" type="date" class="q-mt-sm" clearable>
+                    <q-input color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="filter.date" type="date" class="q-mt-sm" clearable>
                         <template v-slot:prepend>
                             <q-icon name="fas fa-calendar" />
                         </template>

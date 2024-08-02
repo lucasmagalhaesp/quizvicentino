@@ -8,7 +8,7 @@
             <q-form class="col">
                 <div class="row q-col-gutter-sm">
                     <div class="col-12">
-                        <q-input ref="name" color="green-4" bg-color="white" outlined dense v-model="form.name" label="Nome" :rules="[val => !!val || 'Informe seu nome']" :disable="logged">
+                        <q-input ref="name" color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="form.name" label="Nome" :rules="[val => !!val || 'Informe seu nome']" :disable="logged">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-user" />
                             </template>
@@ -16,7 +16,7 @@
                     </div>
                     
                     <div class="col-12">
-                        <q-input ref="email" type="email" color="green-4" bg-color="white" outlined dense v-model="form.email" label="E-mail" :rules="[val => !!val || 'Informe seu e-mail']" :disable="logged">
+                        <q-input ref="email" type="email" color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="form.email" label="E-mail" :rules="[val => !!val || 'Informe seu e-mail']" :disable="logged">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-at" />
                             </template>
@@ -24,7 +24,7 @@
                     </div>
                 
                     <div class="col-12">
-                        <q-input ref="subject" color="green-4" bg-color="white" outlined dense v-model="form.subject" label="Assunto" :rules="[val => !!val || 'Informe o assunto']">
+                        <q-input ref="subject" color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="form.subject" label="Assunto" :rules="[val => !!val || 'Informe o assunto']">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-clipboard-list" />
                             </template>
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="col-12">
-                        <q-input ref="message" color="green-4" bg-color="white" outlined dense v-model="form.message" rows="3" type="textarea" label="Mensagem" :rules="[val => !!val || 'Escreva a mensagem']">
+                        <q-input ref="message" color="green-4" bg-color="white" outlined :dense="!$q.screen.lt.sm" v-model="form.message" rows="3" type="textarea" label="Mensagem" :rules="[val => !!val || 'Escreva a mensagem']">
                             <template v-slot:prepend>
                                 <q-icon name="fas fa-envelope" />
                             </template>
@@ -40,13 +40,7 @@
                     </div>
                 </div>
                 <div class="row justify-center" style="margin-top: 15px">
-                    <div>
-                        <q-btn color="secondary" icon="fas fa-envelope" :loading="load" @click="send" label="Enviar" />
-                    </div>
-                    <!-- <div class="col-2 text-right">
-                        <q-btn push color="primary" @click="seamless = true" icon="far fa-id-card" />
-                    </div> -->
-                    
+                    <q-btn color="secondary" icon="fas fa-envelope" :loading="load" @click="send" label="Enviar" :class="$q.screen.lt.sm ? 'full-width' : ''" />
                 </div>
             </q-form>
         </div>            

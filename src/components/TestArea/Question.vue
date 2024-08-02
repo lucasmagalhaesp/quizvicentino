@@ -1,67 +1,63 @@
 <template>
-        <div class="col-12">
-            <div class="row justify-center">
-                <div class="col-md-6">
-                    <div class="row q-my-md items-center">
-                        <div class="col-12 col-md-6 text-center">
-                            <test-data></test-data>
-                        </div>
-                        <div class="col-12 col-md" :class="$q.screen.lt.sm ? 'q-mt-md' : ''">
-                            <timer></timer>
-                        </div>
-                        <!-- <div class="col-1">
-                            <q-btn color="red" size="sm" @click="$store.state.cpActiveTestArea = false" label="Sair" />
-                        </div> -->
+        <div class="row justify-center">
+            <div class="col-md-6">
+                <div class="row q-my-md items-center">
+                    <div class="col-12 col-md-6 text-center">
+                        <test-data></test-data>
                     </div>
-                    
-                    <div class="row justify-center items-center" v-if="betweenQuestions" style="height: 200px">
-                        <div class="q-sm-md col-12 text-center">
-                            <q-spinner-hourglass
-                                color="secondary"
-                                size="7em"
-                            />
-                        </div>
+                    <div class="col-12 col-md" :class="$q.screen.lt.sm ? 'q-mt-md' : ''">
+                        <timer></timer>
                     </div>
-                    <div class="row q-my-md" v-else>
-                        <div class="q-sm-md col-12">
-                            <p style="line-height: 20px">{{ currentQuestion.question.description }}</p>
-                            <div>
-                                <transition
-                                    appear
-                                    enter-active-class="animated fadeIn"
-                                    leave-active-class="animated fadeOut"
-                                >
-                                    <div v-show="!loadConfirm">
-                                        <q-option-group
-                                            :options="currentQuestion.answers"
-                                            label="Notifications"
-                                            type="radio"
-                                            v-model="userResponse"
-                                            name="answer"
-                                        />
-                                    </div>
-                                </transition>
-                                <q-inner-loading :showing="loadConfirm">
-                                    <q-spinner
-                                        color="secondary"
-                                        size="3em"
-                                        :thickness="10"
-                                    />
-                                </q-inner-loading>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center q-gutter-lg col-xs-12">
-                        <template v-if="!testEnd">
-                            <q-btn v-if="activateTimer && !betweenQuestions" label="Confirmar" color="secondary" icon="fas fa-check" :loading="loadConfirm" @click="getCorrectResponse" />
-                            <q-btn v-if="activateTimer && !betweenQuestions" label="SAIR DO TESTE" color="negative" icon="fas fa-ban" @click="exitTest" />
-                            <!-- <q-btn color="primary" :loading="loadNext" v-if="!activateTimer" @click="numQuestion++" label="Próxima" /> -->
-                        </template>
-                        <!-- <q-btn color="brown-5" v-else @click="saveTest" class="full-width" label="Resultado" /> -->
+                    <!-- <div class="col-1">
+                        <q-btn color="red" size="sm" @click="$store.state.cpActiveTestArea = false" label="Sair" />
+                    </div> -->
+                </div>
+                
+                <div class="row justify-center items-center" v-if="betweenQuestions" style="height: 200px">
+                    <div class="q-sm-md col-12 text-center">
+                        <q-spinner-hourglass
+                            color="secondary"
+                            size="7em"
+                        />
                     </div>
                 </div>
-            </div>            
-        </div>
+                <div class="row q-my-md" v-else>
+                    <div class="q-sm-md col-12">
+                        <p style="line-height: 20px">{{ currentQuestion.question.description }}</p>
+                        <div>
+                            <transition
+                                appear
+                                enter-active-class="animated fadeIn"
+                                leave-active-class="animated fadeOut"
+                            >
+                                <div v-show="!loadConfirm">
+                                    <q-option-group
+                                        :options="currentQuestion.answers"
+                                        label="Notifications"
+                                        type="radio"
+                                        v-model="userResponse"
+                                        name="answer"
+                                    />
+                                </div>
+                            </transition>
+                            <q-inner-loading :showing="loadConfirm">
+                                <q-spinner
+                                    color="secondary"
+                                    size="3em"
+                                    :thickness="10"
+                                />
+                            </q-inner-loading>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="!testEnd" class="row">
+                    <div class="col-12 text-center" :class="$q.screen.lt.sm ? '' : 'q-gutter-md'">
+                        <q-btn v-if="activateTimer && !betweenQuestions" label="Confirmar" color="secondary" icon="fas fa-check" :loading="loadConfirm" @click="getCorrectResponse" :class="$q.screen.lt.sm ? 'full-width' : ''" />
+                        <q-btn v-if="activateTimer && !betweenQuestions" label="SAIR DO TESTE" color="negative" icon="fas fa-ban" @click="exitTest" :class="$q.screen.lt.sm ? 'full-width q-mt-md' : ''" />
+                    </div>
+                </div>
+            </div>
+        </div>        
         <q-dialog v-model="resultAlert" persistent>
             <q-card :class="response == 'ok' ? 'bg-secondary' : 'bg-negative'" class="text-white q-py-sm q-px-sm" style="width: 300px">
                 <q-card-section>
